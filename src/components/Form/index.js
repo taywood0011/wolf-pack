@@ -1,21 +1,28 @@
-import React from "react"
-import "./style.css"
+import React, { Component } from "react";
+import "./style.css";
 import { Form, FormInput, FormTextarea, FormGroup } from "shards-react";
 
-function InputInfo(props) {
- 
-return (
-    <Form>
-    <FormGroup>
-      <FormInput id="#username" placeholder={props.nameLabel} />
-    </FormGroup>
-    <FormGroup>
-      <FormInput id="#password" placeholder="City, State" />
-    </FormGroup>
-    <FormTextarea placeholder={props.descriptionLabel}/>
-  </Form>
-  
-)
+class InputInfo extends Component {
+
+  state ={
+    formControl: {
+      description: "Tell Us About Yourself/Howl/Pack",
+      name: "Username/Howl/Pack"
+    }
+  }
+  render() {
+    return (
+      <Form>
+        <FormGroup>
+          <FormInput id="#username" placeholder={this.state.formControl.name} />
+        </FormGroup>
+        <FormGroup>
+          <FormInput id="#password" placeholder="City, State" />
+        </FormGroup>
+        <FormTextarea placeholder={this.state.formControl.description} />
+      </Form>
+    );
+  }
 }
 
-export default InputInfo
+export default InputInfo;
