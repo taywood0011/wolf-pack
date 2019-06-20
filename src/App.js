@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavComponent from "./components/NavComponent";
 import CategoryPage from "./components/CategoryPage";
-import InputInfo from "./components/Form";
+import InputInfo from "./components/InputInfo";
 
 
 class App extends Component {
