@@ -1,0 +1,29 @@
+.login {
+    background-color:  #f7f8f9;
+    width: 70%;
+    padding: 30px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+label {
+    color: #8f9296;
+    clear: left;
+}
+
+button {
+    margin-right: 10px;
+}
+
+h2 {
+    float: right;
+}
+
+.fas fa-paw {
+    float: right;
+}
+
+.header-login {
+    margin-bottom: 10px;
+}
