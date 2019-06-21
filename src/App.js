@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import CategoryPage from "./components/CategoryPage";
 import InputInfo from "./components/InputInfo";
 import ProtectedRoute from "./components/LoginComponent/ProtectedRoute";
-import NavComponent from "./components/NavComponent"
-import LoginComponent from "./components/LoginComponent"
+import NavComponent from "./components/NavComponent";
+import LoginComponent from "./components/LoginComponent";
 import UserContext from "./context/UserContext";
 import HomePage from "./components/LoginComponent/Homepage";
 
@@ -28,13 +28,13 @@ class App extends Component {
 
   state = {
     user: null
-  }
+  };
 
-  setUser = (user) => {
-	  this.setState({ user });
-  }
+  setUser = user => {
+    this.setState({ user });
+  };
   render() {
-    const {user} = this.state;
+    const { user } = this.state;
     const setUser = this.setUser;
     return (
       <Router>
@@ -53,26 +53,26 @@ class App extends Component {
           <Route
             exact
             path="/howls/:category"
-            render={(props) => <Tundra currentDisplay="howls" {...props} />}
+            render={props => <Tundra currentDisplay="howls" {...props} />}
           />
           <Route
             exact
             path="/packs/:category"
-            render={(props) => <Tundra currentDisplay="packs" {...props} />}
+            render={props => <Tundra currentDisplay="packs" {...props} />}
           />
-         
-          <LoginComponent> 
-      	<UserContext.Provider value={{ setUser, user }}>
-          <ProtectedRoute exact path="/" component={HomePage} />
-          <Route exact path="/login" component={LoginComponent} />
-       </UserContext.Provider>
-       </LoginComponent>
-       <FooterComponent />
+
+          <UserContext.Provider value={{ setUser, user }}>
+            <ProtectedRoute exact path="/" component={HomePage} />
+            <Route exact path="/login" component={LoginComponent} />
+          </UserContext.Provider>
+
+          <FooterComponent />
+
         </div>
+        
       </Router>
     );
   }
 }
 
 export default App;
- 

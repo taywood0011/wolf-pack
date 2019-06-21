@@ -48,7 +48,7 @@ export default class ItemCard extends React.Component {
         <Card style={{ maxWidth: "300px" }} onClick={this.toggle}>
           <CardImg src={this.props.img || "https://place-hold.it/300x200"} />
           <CardBody>
-            <CardTitle>{this.props.title || "Title"}</CardTitle>
+            <CardTitle><h2>{this.props.title || "Title"}</h2></CardTitle>
             <h4>{this.props.category || "pets"}</h4>
             <h6>{this.props.body || "lorem ipsim dolor imet"}</h6>
           </CardBody>
