@@ -7,9 +7,9 @@ function Category(props) {
     <Col sm="12" md="4" lg="3">
       <img className="category-img" src={props.image} alt={props.title} />
       <div className={`category-center fas fa-${props.icon} fa-5x`} />
-      <div href="#" className="category-title">
+      <a href={`/${props.dest}/${props.title}`} className="category-title">
         {props.title}
-      </div>
+      </a>
     </Col>
   );
 }

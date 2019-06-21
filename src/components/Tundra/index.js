@@ -1,10 +1,9 @@
 import React from "react";
-import { Container} from "shards-react";
+import { Container } from "shards-react";
 import ItemCard from "../ItemCard";
-import "./styles.css"
+import "./styles.css";
 
 class Tundra extends React.Component {
-
   state = {
     data: []
   };
@@ -15,7 +14,7 @@ class Tundra extends React.Component {
         // insert database call using category in state
 
         /*
-        API.getHowls({category: this.props.category})
+        API.getHowls({category: this.props.match.params.category})
         .then(res => {
             this.setState({
                 data: res.map(item => {
@@ -35,6 +34,7 @@ class Tundra extends React.Component {
               title: "Looking for group!!!1!",
               body:
                 "ISO an airbud/electro-swing fan group. Both would be ideal, but either would work.",
+              category: this.props.match.params.category,
               btnAction: "Invite",
               type: "howl"
             },
@@ -44,6 +44,7 @@ class Tundra extends React.Component {
               title: "Looking for group!!!1!",
               body:
                 "ISO an airbud/electro-swing fan group. Both would be ideal, but either would work.",
+              category: this.props.match.params.category,
               btnAction: "Invite",
               type: "howl"
             }
@@ -51,11 +52,11 @@ class Tundra extends React.Component {
         });
         return null;
 
-      case "groups":
+      case "packs":
         // insert database call using category in state
 
         /*
-        API.getGroups({category: this.props.category})
+        API.getGroups({category: this.props.match.params.category})
             .then(res => {
                 this.setState({
                     data: res.map(item => {
@@ -75,8 +76,9 @@ class Tundra extends React.Component {
               title: "Forming Electro-Swing Band",
               body:
                 "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
-              btnAction: "Join", 
-              type: "group"
+              category: this.props.match.params.category,
+              btnAction: "Join",
+              type: "pack"
             },
             {
               id: 2,
@@ -84,8 +86,9 @@ class Tundra extends React.Component {
               title: "Forming Electro-Swing Band",
               body:
                 "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
+              category: this.props.match.params.category,
               btnAction: "Join",
-              type: "group"
+              type: "pack"
             }
           ]
         });
@@ -96,48 +99,24 @@ class Tundra extends React.Component {
     }
   }
 
-  joinGroup() {
-    console.log("requested")
-    this.toggle()
-  }
-
-  inviteHowl() {
-    console.log("invited")
-    this.toggle()
-  }
-
   componentDidMount() {
-      this.getCardData()
+    this.getCardData();
   }
 
   render() {
-
-    console.log("hello")
     return (
       <Container>
         {/* Add conditional logic for rendering either this.state.data in ItemCards or the home page */}
         {this.props.currentDisplay === "home" ? (
-            <div className="tundra-home">{/* Homepage */}</div>
+          <div className="tundra-home">{/* Homepage */}</div>
         ) : (
-            this.state.data.map(card => {
-                return <ItemCard key={card.id} {...card} />
-        }))}
+          this.state.data.map(card => {
+            return <ItemCard key={card.id} {...card} />;
+          })
+        )}
       </Container>
     );
   }
 }
 
-export default Tundra; /*
-<ItemCard
-    img=""
-    title="Forming Electro-Swing Band"
-    body="We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!"
-    clickFn={function() {
-    // joinGroup
-    this.toggle();
-    }}
-/>
-*/
-
-/*
-{/* Group ad Example */
+export default Tundra;

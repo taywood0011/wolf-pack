@@ -49,7 +49,8 @@ export default class ItemCard extends React.Component {
           <CardImg src={this.props.img || "https://place-hold.it/300x200"} />
           <CardBody>
             <CardTitle>{this.props.title || "Title"}</CardTitle>
-            <p>{this.props.body || "lorem ipsim dolor imet"}</p>
+            <h4>{this.props.category || "pets"}</h4>
+            <h6>{this.props.body || "lorem ipsim dolor imet"}</h6>
           </CardBody>
         </Card>
 

@@ -52,13 +52,13 @@ class App extends Component {
           />
           <Route
             exact
-            path="/howls"
-            render={() => <Tundra currentDisplay="howls" category="pets" />}
+            path="/howls/:category"
+            render={(props) => <Tundra currentDisplay="howls" {...props} />}
           />
           <Route
             exact
-            path="/groups"
-            render={() => <Tundra currentDisplay="groups" category="pets" />}
+            path="/packs/:category"
+            render={(props) => <Tundra currentDisplay="packs" {...props} />}
           />
          
           <LoginComponent> 
@@ -74,33 +74,5 @@ class App extends Component {
   }
 }
 
-export default App; /*
+export default App;
  
-//Card display JSX
-
-/*
-<Container>
-
-  /* Howl Example */ /*
- <ItemCard
-    img=""
-    title="Looking for group!!!1!"
-    body="ISO an airbud/electro-swing fan group. Both would be ideal, but either would work."
-    clickFn={function() {
-      // invite()
-      this.toggle();
-    }}
-  />
-
-  /* Group ad Example */ /*
-  <ItemCard
-    img=""
-    title="Forming Electro-Swing Band"
-    body="We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!"
-    clickFn={function() {
-      // joinGroup
-      this.toggle();
-    }}
-  />
-</Container>
-*/
