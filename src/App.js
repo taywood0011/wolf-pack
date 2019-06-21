@@ -58,6 +58,8 @@ class App extends Component {
           <Route exact path="/packCategories" component={CategoryPage} />
           <Route exact path="/howlCategories" component={CategoryPage} />
           <Route exact path="/profile" component={InputInfo} />
+          <Route exact path="/newHowl" component={InputInfo} />
+          <Route exact path="/newPack" component={InputInfo} />
 
           <Route exact path="/" render={() => <Tundra currentDisplay="home" />} />
           <Route exact path="/howls" render={() => <Tundra currentDisplay="howls" category="pets" />} />

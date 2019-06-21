@@ -84,7 +84,18 @@ export default class NavComponent extends React.Component {
                     </Link>
                   </span>
                 </DropdownItem>
-                <DropdownItem>New Pack</DropdownItem>
+                <DropdownItem>
+                <Link
+                to="/profile"
+                className={
+                  window.location.pathname === "/newPack"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                New Pack
+              </Link>
+                </DropdownItem>
               </DropdownMenu>
             </Dropdown>
 
@@ -106,7 +117,18 @@ export default class NavComponent extends React.Component {
                 Browse Howls
               </Link>
                 </DropdownItem>
-                <DropdownItem>New Howl</DropdownItem>
+                <DropdownItem>
+                <Link
+                to="/profile"
+                className={
+                  window.location.pathname === "/newHowl"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                New Howl
+              </Link>
+                </DropdownItem>
               </DropdownMenu>
             </Dropdown>
 
