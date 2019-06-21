@@ -17,7 +17,10 @@ import "./styles.css";
 export default class ItemCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { open: false };
+    this.state = { 
+      open: false,
+      type: props.type
+    };
     this.toggle = this.toggle.bind(this);
   }
 
@@ -25,6 +28,18 @@ export default class ItemCard extends React.Component {
     this.setState({
       open: !this.state.open
     });
+  }
+
+  clickFn = () => {
+    if(this.state.type === "howl") {
+      //invite to group
+      console.log("invited");
+      this.toggle();
+    } else {
+      //request to join
+      console.log("requested");
+      this.toggle();
+    }
   }
 
   render() {
@@ -64,7 +79,7 @@ export default class ItemCard extends React.Component {
                   squared
                   outline
                   theme="info"
-                  onClick={this.props.clickFn.bind(this)}
+                  onClick={this.clickFn}
                 >
                   {this.props.btnAction || "Join"}
                 </Button>
