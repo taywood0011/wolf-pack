@@ -1,0 +1,42 @@
+.img-container {
+    padding-top: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.edit-img {
+    opacity: .8;
+    filter: brightness(40%) grayscale(10%);
+    height: 200px;
+    width: 200px;
+}
+
+.form-container {
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 30px;
+}
+
+.img-text-center {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pill-button-left {
+    border-radius: 500px;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+}
+
+.pill-button {
+    border-radius: 500px;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    float: right;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

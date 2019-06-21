@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import { Link } from "react-router-dom";
 import {
   Navbar,
   NavbarToggler,
@@ -46,7 +47,6 @@ export default class NavComponent extends React.Component {
     });
   }
 
-
   toggleNavbar() {
     this.setState({
       ...this.state,
@@ -59,52 +59,95 @@ export default class NavComponent extends React.Component {
   render() {
     return (
       <Navbar type="light" theme="light" expand="md">
-        <NavbarBrand href="#">The Tundra</NavbarBrand>
+        <NavbarBrand href="/">The Tundra</NavbarBrand>
         <NavbarToggler onClick={this.toggleNavbar} />
 
         <Collapse open={this.state.collapseOpen} navbar>
           <Nav navbar className="ml-auto">
-           
-            <Dropdown
-              open={this.state.packsOpen}
-              toggle={this.togglePacks}
-            >
+            <Dropdown open={this.state.packsOpen} toggle={this.togglePacks}>
               <DropdownToggle nav caret>
                 Packs
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem>My Packs</DropdownItem>
-                <DropdownItem>Browse Packs</DropdownItem>
-                <DropdownItem>New Pack</DropdownItem>
+                <DropdownItem>
+                  <span>
+                    <Link
+                      to="/packCategories"
+                      className={
+                        window.location.pathname === "/packCategories"
+                          ? "nav-link active"
+                          : "nav-link"
+                      }
+                    >
+                      Browse Packs
+                    </Link>
+                  </span>
+                </DropdownItem>
+                <DropdownItem>
+                <Link
+                to="/profile"
+                className={
+                  window.location.pathname === "/newPack"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                New Pack
+              </Link>
+                </DropdownItem>
               </DropdownMenu>
             </Dropdown>
 
-            <Dropdown
-              open={this.state.howlsOpen}
-              toggle={this.toggleHowls}
-            >
+            <Dropdown open={this.state.howlsOpen} toggle={this.toggleHowls}>
               <DropdownToggle nav caret>
                 Howls
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem>My Howls</DropdownItem>
-                <DropdownItem>Browse Howls</DropdownItem>
-                <DropdownItem>New Howl</DropdownItem>
+                <DropdownItem>
+                <Link
+                to="/howlCategories"
+                className={
+                  window.location.pathname === "/howlCategories"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                Browse Howls
+              </Link>
+                </DropdownItem>
+                <DropdownItem>
+                <Link
+                to="/profile"
+                className={
+                  window.location.pathname === "/newHowl"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                New Howl
+              </Link>
+                </DropdownItem>
               </DropdownMenu>
             </Dropdown>
-        
+
             <NavItem>
-              <NavLink href="#">
+              <Link
+                to="/profile"
+                className={
+                  window.location.pathname === "/profile"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
                 Profile
-              </NavLink>
+              </Link>
             </NavItem>
 
             <NavItem>
-              <NavLink href="#">
-                Log Out
-              </NavLink>
+              <NavLink href="#">Log Out</NavLink>
             </NavItem>
-
           </Nav>
         </Collapse>
       </Navbar>
