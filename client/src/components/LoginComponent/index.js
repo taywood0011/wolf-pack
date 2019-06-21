@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import Auth from "../../utils/Auth";
 import { Form, FormInput, FormGroup, Button } from "shards-react";
+import "./styles.css";
 
 
 class LoginComponent extends Component {
@@ -31,8 +32,12 @@ class LoginComponent extends Component {
 
     render() {
         return (
-            <div>
+            <div className ="login">
+                <div className="header-login">
                 <h2>Wolf-Pack</h2>
+                <i className="fas fa-paw fa-3x"></i>
+                </div>
+                
                 <Form onSubmit={this.submitHandler}>
                     <FormGroup>
                         <label htmlFor="username">Username</label>
@@ -55,8 +60,8 @@ class LoginComponent extends Component {
                             value={this.state.password}
                             onChange={this.changeHandler} />
                     </FormGroup>
-                    <Button theme="dark" type="submit">Login</Button>
-                    <Button theme="dark">Create</Button>
+                    <Button className="login-btn" theme="dark" type="submit">Login</Button>
+                    <Button className="create-btn" theme="dark">Create</Button>
                 </Form>
             </div>
         )
