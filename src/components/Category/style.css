@@ -1,6 +1,6 @@
 
 
-img {
+.category-img {
     opacity: .8;
     filter: brightness(40%) grayscale(10%);
 }

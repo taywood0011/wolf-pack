@@ -4,6 +4,13 @@
     position: relative;
 }
 
+.edit-img {
+    opacity: .8;
+    filter: brightness(40%) grayscale(10%);
+    height: 200px;
+    width: 200px;
+}
+
 .form-container {
     max-width: 60%;
     margin-left: auto;
