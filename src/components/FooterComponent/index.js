@@ -1,28 +1,27 @@
 import React from "react";
-import { Container, Row, Col } from "shards-react";
 import "./styles.css";
 
-export default ({cards}) => {
+export default () => {
   return (
-    <footer class="footer">
-      <div class="footer-right">
+    <footer className="footer">
+      <div className="footer-right">
         <p className="introductions">Meet the developers: </p>
-        <a href="#" className="introductions">
+        <a href="https://github.com/tymathena" className="introductions">
           Tyler Mathena
         </a>
-        <a href="#" className="introductions">
+        <a href="https://github.com/amp3193" className="introductions">
           Anna Perkins
         </a>
-        <a href="#" className="introductions">
+        <a href="https://github.com/abusch419 " className="introductions">
           Alex Eversbusch
         </a>
-        <a href="#" className="introductions">
+        <a href="https://github.com/taywood0011/" className="introductions">
           Taylor Wood
         </a>
       </div>
 
-      <div class="footer-left">
-        <p class="footer-links">
+      <div className="footer-left">
+        <p className="footer-links">
           <a href="https://github.com/taywood0011/wolf-pack">Github Repo</a>
         </p>
 

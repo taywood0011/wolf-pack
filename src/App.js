@@ -1,10 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 import NavComponent from "./components/NavComponent";
-import ItemCard from "./components/ItemCard";
+import Tundra from "./components/Tundra";
 import FooterComponent from "./components/FooterComponent";
-import { Container } from "shards-react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import CategoryPage from "./components/CategoryPage";
+import InputInfo from "./components/InputInfo";
 
+/*
 function App() {
   return (
     <Router>
@@ -22,6 +24,49 @@ function App() {
       <FooterComponent cards="false" />
     </Router>
   );
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import NavComponent from "./components/NavComponent";
+import CategoryPage from "./components/CategoryPage";
+import InputInfo from "./components/InputInfo";
+*/
+
+
+class App extends Component {
+  
+
+  // ==================================================
+  // LOGIC FOR LOADING CATEGORY CARDS SHOULD GO HERE
+
+  // componentDidMount() {
+  //      this.loadCategories();
+  //  }
+  //  loadCategories = () => {
+  //     API.getCategories()
+  //     .then(res =>
+  //       this.setState({ category: res.data, image: "", icon: ""})
+  //     )
+  //     .catch(err => console.log(err));
+  //  }
+  // ==================================================
+
+  render() {
+    return (
+      <Router>
+        <div>
+          <NavComponent />
+          <Route exact path="/packCategories" component={CategoryPage} />
+          <Route exact path="/howlCategories" component={CategoryPage} />
+          <Route exact path="/profile" component={InputInfo} />
+
+          <Route exact path="/" render={() => <Tundra currentDisplay="home" />} />
+          <Route exact path="/howls" render={() => <Tundra currentDisplay="howls" category="pets" />} />
+          <Route exact path="/groups" render={() => <Tundra currentDisplay="groups" category="pets" />} />
+          <FooterComponent />
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App; /*
