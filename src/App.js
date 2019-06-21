@@ -31,10 +31,7 @@ import CategoryPage from "./components/CategoryPage";
 import InputInfo from "./components/InputInfo";
 */
 
-
 class App extends Component {
-  
-
   // ==================================================
   // LOGIC FOR LOADING CATEGORY CARDS SHOULD GO HERE
 
@@ -60,10 +57,21 @@ class App extends Component {
           <Route exact path="/profile" component={InputInfo} />
           <Route exact path="/newHowl" component={InputInfo} />
           <Route exact path="/newPack" component={InputInfo} />
-
-          <Route exact path="/" render={() => <Tundra currentDisplay="home" />} />
-          <Route exact path="/howls" render={() => <Tundra currentDisplay="howls" category="pets" />} />
-          <Route exact path="/groups" render={() => <Tundra currentDisplay="groups" category="pets" />} />
+          <Route
+            exact
+            path="/"
+            render={() => <Tundra currentDisplay="home" />}
+          />
+          <Route
+            exact
+            path="/howls"
+            render={() => <Tundra currentDisplay="howls" category="pets" />}
+          />
+          <Route
+            exact
+            path="/groups"
+            render={() => <Tundra currentDisplay="groups" category="pets" />}
+          />
           <FooterComponent />
         </div>
       </Router>
