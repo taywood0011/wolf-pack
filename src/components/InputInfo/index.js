@@ -36,6 +36,9 @@ class InputInfo extends Component {
             </FormGroup>
             <FormTextarea placeholder={this.state.formControl.description} />
           </Form>
+          <Button className="pill-button" theme="info">
+                Submit
+              </Button>
         </div>
       </>
     );

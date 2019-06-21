@@ -25,3 +25,18 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.pill-button-left {
+    border-radius: 500px;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+}
+
+.pill-button {
+    border-radius: 500px;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    float: right;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
