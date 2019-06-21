@@ -11,13 +11,28 @@ state= {
           image: "http://placekitten.com/300/300",
           title: "Pets",
           icon: "paw"
+        },
+        {
+          image: "http://placekitten.com/300/300",
+          title: "Pets",
+          icon: "paw"
+        },
+        {
+          image: "http://placekitten.com/300/300",
+          title: "Pets",
+          icon: "paw"
+        },
+        {
+          image: "http://placekitten.com/300/300",
+          title: "Pets",
+          icon: "paw"
         }
       ]
 }
 render() {
     return (
       
-        <Container>
+        <Container className="category-container" >
         <Row>
           {this.state.categories.map(category => (
             <Category

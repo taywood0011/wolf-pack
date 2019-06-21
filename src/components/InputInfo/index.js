@@ -13,11 +13,11 @@ class InputInfo extends Component {
     return (
       <>
         <div className="img-container">
-          <img src="http://placekitten.com/300/300" alt="add-img" />
+          <img className="edit-img" src="http://placekitten.com/300/300" alt="add-img" />
           <div className="img-text-center">
             <span>
               {" "}
-              <Button outline squared theme="light">
+              <Button outline squared size="md" theme="light">
                 Choose An Image
               </Button>{" "}
             </span>
@@ -36,6 +36,9 @@ class InputInfo extends Component {
             </FormGroup>
             <FormTextarea placeholder={this.state.formControl.description} />
           </Form>
+          <Button className="pill-button" theme="info">
+                Submit
+              </Button>
         </div>
       </>
     );

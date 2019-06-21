@@ -7,7 +7,9 @@
 	text-align: left;
 	font: normal 16px sans-serif;
 	padding: 25px 30px;
+	display: inline-block;
 }
+
 
 .footer .footer-left p{
 	color:  #8f9296;
@@ -39,7 +41,7 @@
 .footer .footer-right .introductions{
 	display: inline-block;
 	border-radius: 2px;
-	font-size: 20px;
+	font-size: 15px;
 	color: grey;
 	text-align: center;
 	line-height: 35px;
