@@ -4,8 +4,14 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,10 +23,19 @@
   "bugs": {
     "url": "https://github.com/taywood0011/wolf-pack/issues"
   },
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
   "homepage": "https://github.com/taywood0011/wolf-pack#readme",
   "dependencies": {
-    "bcrypt": "^3.0.6",
-    "express": "^4.17.1",
-    "mongoose": "^5.6.0"
+    "axios": "^0.16.2",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.3",
+    "if-env": "^1.0.4",
+    "jsonwebtoken": "^8.5.0",
+    "mongoose": "^5.6.0",
+    "react-router-dom": "4.3.1"
   }
 }

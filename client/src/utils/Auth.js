@@ -1,40 +1,57 @@
 import axios from "axios";
 
-function Auth () {
-	let loggedIn = false;
+function Auth() {
+  let loggedIn = false;
 
-	function logIn (username, password, cb) {
-		axios.post("/api/authenticate", {username, password})
-			.then(response => {
-				localStorage.setItem("token", response.data.token);
-				loggedIn = true;
-				cb(response.data);
-			})
-			.catch(err => {
-				console.log(err);
-			});
-	}
+  function logIn(username, password, cb) {
+    axios
+      .post("/api/authenticate", { username, password })
+      .then(response => {
+        localStorage.setItem("token", response.data.token);
+        loggedIn = true;
+        cb(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
-	function logOut (cb) {
-		localStorage.removeItem("token");
-		loggedIn = false;
-		cb();
-	}
+  function createUser(username, password, cb) {
+    axios
+      .post("/api/createuser", { username, password })
+      .then(response => {
+        localStorage.setItem("token", response.data.token);
+        loggedIn = true;
+        cb(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
-	function getToken () {
-		return localStorage.getItem("token");
-	}
+  function logOut(cb) {
+	console.log('logging out the user')
+	localStorage.removeItem("token");
+	loggedIn = false;
+	cb()
+  }
 
-	function isLoggedIn () {
-		return loggedIn;
-	}
+  function getToken() {
+    return localStorage.getItem("token");
+  }
 
-	return {
-		isLoggedIn,
-		logIn,
-		logOut,
-		getToken
-	}
+  function isLoggedIn() {
+    console.log("loggedIn:", loggedIn);
+    return loggedIn;
+  }
+
+  return {
+    isLoggedIn,
+    logIn,
+    logOut,
+    getToken,
+    createUser
+  };
 }
 
 export default Auth();

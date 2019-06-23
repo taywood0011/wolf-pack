@@ -5,7 +5,6 @@ import Auth from "../../utils/Auth";
 import { Form, FormInput, FormGroup, Button } from "shards-react";
 import "./styles.css";
 
-
 class LoginComponent extends Component {
     static contextType = UserContext;
 
@@ -24,6 +23,17 @@ class LoginComponent extends Component {
         const { username, password } = this.state;
         if (username && password) {
             Auth.logIn(username, password, (response) => {
+                this.context.setUser(response);
+                this.props.history.push("/");
+            });
+        } 
+    }
+
+    createHandler = (e) => {
+        e.preventDefault();
+        const { username, password } = this.state;
+        if (username && password) {
+            Auth.createUser(username, password, (response) => {
                 this.context.setUser(response);
                 this.props.history.push("/");
             });
@@ -61,7 +71,7 @@ class LoginComponent extends Component {
                             onChange={this.changeHandler} />
                     </FormGroup>
                     <Button className="login-btn" theme="dark" type="submit">Login</Button>
-                    <Button className="create-btn" theme="dark">Create</Button>
+                    <Button className="create-btn" theme="dark" onClick={this.createHandler}>Create</Button>
                 </Form>
             </div>
         )
