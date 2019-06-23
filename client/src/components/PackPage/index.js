@@ -4,7 +4,7 @@ import MemberCards from "../Components/MemberCards";
 import Form from "..components/Form";
 import Message from "../components/Messages";
 import PackForm from "../components/PackForm";
-import Jumbotron from "../Jumbotron"
+import Jumbotron from "../PackHeader"
 
 class Pack extends React.Component {
   constructor(props) {

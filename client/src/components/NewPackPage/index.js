@@ -1,5 +1,6 @@
 import React from "react";
-
+import PackChat from "../PackChat"
+import PackDesc from "../PackDesc"
 import { Container } from "shards-react";
 import {
   Card,
@@ -14,56 +15,57 @@ import {
   ListGroupItem,
   FormTextarea
 } from "shards-react";
-import PackMember from "../PackMember"
+import PackMember from "../PackMember";
+import PackHeader from "../PackHeader";
 
 class NewPackPage extends React.Component {
   state = {
-    image: "http://placekitten.com/300/300",
-    packName: "PacknameExample",
+      pack: {
+        image: "http://placekitten.com/300/300",
+        packName: "Pack Name Example",
+        description: "A really good pack to be in.",
+        category: "AwesomePacks"
+      },
     packMember: [
-        {
-            name: "username1",
-            location: "location",
-            packMemberImg: "http://placekitten.com/300/300",
-            _id: "13456"
-        }
-    ]
+      {
+        name: "username1",
+        location: "location",
+        packMemberImg: "http://placekitten.com/300/300",
+        _id: "13456"
+      },
+      {
+        name: "username1",
+        location: "location",
+        packMemberImg: "http://placekitten.com/300/300",
+        _id: "13456"
+      },
+      {
+        name: "username1",
+        location: "location",
+        packMemberImg: "http://placekitten.com/300/300",
+        _id: "13456"
+      }
+    ],
+    newMessage: "Hello World!"
   };
 
   render() {
     return (
       <>
-        <Container className="jumbotron">
-          <img src={this.state.image} alt="packImage" />
-          <h1> {this.state.packName} </h1>
-        </Container>
+      {/* pack header */}
+        <PackHeader image={this.state.pack.image} packName={this.state.pack.packName} />
+        {/* pack description card */}
+        <PackDesc category={this.state.pack.category} description={this.state.pack.description}/>
+        {/* pack members */}
         <Container>
-          <Card style={{ maxWidth: "300px" }}>
-            <CardHeader>Category</CardHeader>
-            <CardBody>
-              <p>Short Description.</p>
-            </CardBody>
-          </Card>
+          <Row>
+            {this.state.packMember.map(packMember => (
+              <PackMember key={packMember._id} {...packMember} />
+            ))}
+          </Row>
         </Container>
-        <Container>
-        <Row>
-          {this.state.packMember.map(packMember => (
-            <PackMember key={packMember._id} {...packMember} />
-          ))}
-        </Row>
-        </Container>
-        <ListGroup>
-      <ListGroupItem>NewMessage</ListGroupItem>
-      <ListGroupItem>New Message</ListGroupItem>
-      <ListGroupItem>New Message</ListGroupItem>
-      <ListGroupItem>New Message</ListGroupItem>
-      <ListGroupItem>New Message</ListGroupItem>
-    </ListGroup>
-    <FormTextarea placeholder="Start Typing To Chat" />
-    <Button className="pill-button" theme="info">
-                Submit
-              </Button>
-
+        {/* pack chat */}
+       <PackChat newMessage={this.state.newMessage}/>
       </>
     );
   }
