@@ -1,15 +1,23 @@
 import React from "react";
 import UserContext from "../../context/UserContext";
+import "./styles.css";
 
-const HomePage = (props) => (
-	<UserContext.Consumer>
-		{context => {
-			return <div>
-				<h1>Home Page (protected)</h1>
-				<h2>Welcome, {context.user.username}!</h2>
-			</div>
-		}}
-	</UserContext.Consumer>
+const HomePage = props => (
+  <UserContext.Consumer>
+    {context => renderHomePage(props, context)}
+  </UserContext.Consumer>
 );
+
+function renderHomePage(props, context) {
+  return (
+    <div className="intro">
+      <h3>Welcome, {context.user.username}!</h3>
+	  <div>
+		  <h2>No more lone wolves</h2>
+		  <p>Find a pack based on your interests. More description goes here</p>
+	  </div>
+    </div>
+  );
+}
 
 export default HomePage;

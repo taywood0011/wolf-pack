@@ -6,21 +6,26 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
   Collapse
 } from "shards-react";
+import Auth from "../../utils/Auth";
+import UserContext from "../../context/UserContext";
 
 export default class NavComponent extends React.Component {
+  static contextType = UserContext;
+
   constructor(props) {
     super(props);
 
     this.togglePacks = this.togglePacks.bind(this);
     this.toggleHowls = this.toggleHowls.bind(this);
     this.toggleNavbar = this.toggleNavbar.bind(this);
+    this.renderLoggedIn = this.renderLoggedIn.bind(this);
+    this.renderNotLoggedIn = this.renderNotLoggedIn.bind(this);
 
     this.state = {
       packsOpen: false,
@@ -32,18 +37,14 @@ export default class NavComponent extends React.Component {
   togglePacks() {
     this.setState({
       ...this.state,
-      ...{
-        packsOpen: !this.state.packsOpen
-      }
+      packsOpen: !this.state.packsOpen,
     });
   }
 
   toggleHowls() {
     this.setState({
       ...this.state,
-      ...{
-        howlsOpen: !this.state.howlsOpen
-      }
+      howlsOpen: !this.state.howlsOpen,
     });
   }
 
@@ -57,6 +58,43 @@ export default class NavComponent extends React.Component {
   }
 
   render() {
+    console.log("rendering nav component");
+    return (
+      <UserContext.Consumer>
+        {context =>
+          Auth.isLoggedIn()
+            ? this.renderLoggedIn(context)
+            : this.renderNotLoggedIn(context)
+        }
+      </UserContext.Consumer>
+    );
+  }
+
+  renderNotLoggedIn(context) {
+    return (
+      <Navbar type="light" theme="light" expand="md">
+        <NavbarBrand href="/">The Tundra</NavbarBrand>
+        <Collapse open={true} navbar>
+          <Nav navbar className="ml-auto">
+            <NavItem>
+              <Link
+                to="/login"
+                className={
+                  window.location.pathname === "/login"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                Log In
+              </Link>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    );
+  }
+
+  renderLoggedIn(context) {
     return (
       <Navbar type="light" theme="light" expand="md">
         <NavbarBrand href="/">The Tundra</NavbarBrand>
@@ -85,16 +123,16 @@ export default class NavComponent extends React.Component {
                   </span>
                 </DropdownItem>
                 <DropdownItem>
-                <Link
-                to="/profile"
-                className={
-                  window.location.pathname === "/newPack"
-                    ? "nav-link active"
-                    : "nav-link"
-                }
-              >
-                New Pack
-              </Link>
+                  <Link
+                    to="/profile"
+                    className={
+                      window.location.pathname === "/newPack"
+                        ? "nav-link active"
+                        : "nav-link"
+                    }
+                  >
+                    New Pack
+                  </Link>
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
@@ -106,28 +144,28 @@ export default class NavComponent extends React.Component {
               <DropdownMenu>
                 <DropdownItem>My Howls</DropdownItem>
                 <DropdownItem>
-                <Link
-                to="/howlCategories"
-                className={
-                  window.location.pathname === "/howlCategories"
-                    ? "nav-link active"
-                    : "nav-link"
-                }
-              >
-                Browse Howls
-              </Link>
+                  <Link
+                    to="/howlCategories"
+                    className={
+                      window.location.pathname === "/howlCategories"
+                        ? "nav-link active"
+                        : "nav-link"
+                    }
+                  >
+                    Browse Howls
+                  </Link>
                 </DropdownItem>
                 <DropdownItem>
-                <Link
-                to="/profile"
-                className={
-                  window.location.pathname === "/newHowl"
-                    ? "nav-link active"
-                    : "nav-link"
-                }
-              >
-                New Howl
-              </Link>
+                  <Link
+                    to="/profile"
+                    className={
+                      window.location.pathname === "/newHowl"
+                        ? "nav-link active"
+                        : "nav-link"
+                    }
+                  >
+                    New Howl
+                  </Link>
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
@@ -145,12 +183,28 @@ export default class NavComponent extends React.Component {
               </Link>
             </NavItem>
 
-            <NavItem>
-              <NavLink href="#">Log Out</NavLink>
+            <NavItem onClick={e => this.handleLogOut(e, context)}>
+              <Link
+                to="/login"
+                className={
+                  window.location.pathname === "/login"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                Log Out
+              </Link>
             </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
     );
+  }
+
+  handleLogOut(e, context) {
+    console.log("handleLogOut");
+    Auth.logOut(() => {
+      context.setUser(null);
+    });
   }
 }

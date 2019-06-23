@@ -39,7 +39,9 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <NavComponent />
+          <UserContext.Provider value={{ setUser, user }}>
+            <NavComponent />
+          </UserContext.Provider>
           <Route exact path="/packCategories" component={CategoryPage} />
           <Route exact path="/howlCategories" component={CategoryPage} />
           <Route exact path="/profile" component={InputInfo} />
@@ -67,9 +69,7 @@ class App extends Component {
           </UserContext.Provider>
 
           <FooterComponent />
-
         </div>
-        
       </Router>
     );
   }
