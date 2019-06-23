@@ -49,7 +49,7 @@ class App extends Component {
           <Route exact path="/newPack" component={InputInfo} />
           <Route
             exact
-            path="/jgufjytr"
+            path="/"
             render={() => <Tundra currentDisplay="home" />}
           />
           <Route
