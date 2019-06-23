@@ -3,17 +3,7 @@ import PackChat from "../PackChat"
 import PackDesc from "../PackDesc"
 import { Container } from "shards-react";
 import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardImg,
-  CardBody,
-  CardFooter,
-  Button,
   Row,
-  ListGroup,
-  ListGroupItem,
-  FormTextarea
 } from "shards-react";
 import PackMember from "../PackMember";
 import PackHeader from "../PackHeader";
