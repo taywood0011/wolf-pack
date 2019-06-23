@@ -89,6 +89,46 @@ class Tundra extends React.Component {
               category: this.props.match.params.category,
               btnAction: "Join",
               type: "pack"
+            },
+            {
+              id: 2,
+              img: "",
+              title: "Forming Electro-Swing Band",
+              body:
+                "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
+              category: this.props.match.params.category,
+              btnAction: "Join",
+              type: "pack"
+            },
+            {
+              id: 2,
+              img: "",
+              title: "Forming Electro-Swing Band",
+              body:
+                "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
+              category: this.props.match.params.category,
+              btnAction: "Join",
+              type: "pack"
+            },
+            {
+              id: 2,
+              img: "",
+              title: "Forming Electro-Swing Band",
+              body:
+                "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
+              category: this.props.match.params.category,
+              btnAction: "Join",
+              type: "pack"
+            },
+            {
+              id: 2,
+              img: "",
+              title: "Forming Electro-Swing Band",
+              body:
+                "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
+              category: this.props.match.params.category,
+              btnAction: "Join",
+              type: "pack"
             }
           ]
         });
@@ -105,7 +145,7 @@ class Tundra extends React.Component {
 
   render() {
     return (
-      <Container>
+      <div className="tundraDisplay">
         {/* Add conditional logic for rendering either this.state.data in ItemCards or the home page */}
         {this.props.currentDisplay === "home" ? (
           <div className="tundra-home">{/* Homepage */}</div>
@@ -114,7 +154,7 @@ class Tundra extends React.Component {
             return <ItemCard key={card.id} {...card} />;
           })
         )}
-      </Container>
+      </div>
     );
   }
 }

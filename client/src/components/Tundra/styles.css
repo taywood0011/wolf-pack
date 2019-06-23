@@ -5,3 +5,10 @@
 body {
     background-image: url("./interlaced.png");
 }
+
+.tundraDisplay {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+}
