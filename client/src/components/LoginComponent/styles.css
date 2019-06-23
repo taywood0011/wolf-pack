@@ -1,4 +1,4 @@
-.login {
+.login, .intro {
     background-color:  #f7f8f9;
     width: 70%;
     padding: 30px;
@@ -27,3 +27,4 @@ h2 {
 .header-login {
     margin-bottom: 10px;
 }
+

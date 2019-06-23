@@ -1,5 +1,6 @@
 import React from "react";
 import UserContext from "../../context/UserContext";
+import "./styles.css";
 
 const HomePage = props => (
   <UserContext.Consumer>
@@ -9,9 +10,12 @@ const HomePage = props => (
 
 function renderHomePage(props, context) {
   return (
-    <div>
-      <h1>Home Page (protected)</h1>
-      <h2>Welcome, {context.user.username}!</h2>
+    <div className="intro">
+      <h3>Welcome, {context.user.username}!</h3>
+	  <div>
+		  <h2>No more lone wolves</h2>
+		  <p>Find a pack based on your interests. More description goes here</p>
+	  </div>
     </div>
   );
 }
