@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 
-const Messages = ({ messages }) => {
+const ChatBox = ({ messages }) => {
 
   const messagesEndRef = useRef(null)
 
@@ -11,11 +11,11 @@ const Messages = ({ messages }) => {
   useEffect(scrollToBottom, [messages]);
 
   return (
-    <div>
+    <div className="messages" >
       {messages.map(message => <Message key={message.id} {...message} />)}
       <div ref={this.messagesEndRef} />
     </div>
   )
 }
 
-export default Messages;
+export default ChatBox;
