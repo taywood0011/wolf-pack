@@ -10,7 +10,7 @@ return(
   <NewMessage newMessage={props.newMessage} />
 </ListGroup>
 <FormTextarea placeholder="Start Typing To Chat" />
-<Button className="pill-button" theme="info">
+<Button className="pill-button" theme="info" type="submit" onClick={props.handleChatSubmit}>
   Submit
 </Button>
 </Container>
@@ -18,3 +18,5 @@ return(
 
 }
 export default PackChat
+
+
