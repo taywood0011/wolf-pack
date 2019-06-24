@@ -28,8 +28,8 @@ const CategoriesSeed = [
   }
 ];
 
-db.Categories.remove({})
-  .then(() => db.Categories.collection.insertMany(CategoriesSeed))
+db.Category.deleteMany({})
+  .then(() => db.Category.collection.insertMany(CategoriesSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
