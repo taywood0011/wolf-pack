@@ -151,11 +151,7 @@ class Tundra extends React.Component {
   render() {
     return (
       <>
-<<<<<<< HEAD
-        <PackPage />
-=======
         {/*}<NewPackPage />*/}
->>>>>>> 0a08a518b08bfcb9367ba39bbc14fa2ffa87c9f5
         <Container>
           <div className="tundraDisplay">
             {/* Add conditional logic for rendering either this.state.data in ItemCards or the home page */}
