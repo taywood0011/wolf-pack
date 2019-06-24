@@ -7,45 +7,60 @@ import {
 } from "shards-react";
 import PackMember from "../PackMember";
 import PackHeader from "../PackHeader";
+import API from "../../utils/API";
+
 
 class PackPage extends React.Component {
-  state = {
-      pack: {
-        image: "http://placekitten.com/300/300",
-        packName: "Pack Name Example",
-        description: "A really good pack to be in.",
-        category: "AwesomePacks"
-      },
-    packMember: [
-      {
-        name: "username1",
-        location: "location",
-        packMemberImg: "http://placekitten.com/300/300",
-        _id: "13456"
-      },
-      {
-        name: "username1",
-        location: "location",
-        packMemberImg: "http://placekitten.com/300/300",
-        _id: "13456"
-      },
-      {
-        name: "username1",
-        location: "location",
-        packMemberImg: "http://placekitten.com/300/300",
-        _id: "13456"
-      }
-    ],
-    newMessage: "Hello World!"
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      title: "",
+      image: "",
+      catagory: "",
+      description: "",
+      members: [],
+      chat: ""
+    };
+  }
+  
+  loadPack = id => {
+    API.getPack(id)
+      .then(res =>
+        this.setState({
+          title: "",
+          image: "",
+          catagory: "",
+          description: "",
+          members: [],
+          chat: ""
+        })
+      )
+      .catch(err => console.log(err));
   };
+
+  //   handleInputChange = event => {
+  //     const { name, value } = event.target;
+  //     this.setState({
+  //       [name]: value
+  //     });
+
+  //     return null;
+  //   };
+
+  // }
+
+  componentDidMount() {
+    this.loadPack();
+  }
 
   render() {
     return (
       <>
-      {/* pack header */}
+        {/* pack header */}
         <PackHeader image={this.state.pack.image} packName={this.state.pack.packName} />
         {/* pack description card */}
-        <PackDesc category={this.state.pack.category} description={this.state.pack.description}/>
+        <PackDesc category={this.state.pack.category} description={this.state.pack.description} />
         {/* pack members */}
         <Container>
           <Row>
@@ -55,7 +70,7 @@ class PackPage extends React.Component {
           </Row>
         </Container>
         {/* pack chat */}
-       <PackChat newMessage={this.state.newMessage}/>
+        <PackChat newMessage={this.state.newMessage} />
       </>
     );
   }

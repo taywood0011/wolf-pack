@@ -1,0 +1,14 @@
+.Pack-home {
+    height: 720px;
+}
+
+body {
+    background-image: url("./packbackground.png");
+}
+
+.pack-display {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+}

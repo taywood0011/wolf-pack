@@ -30,6 +30,13 @@ function processUserDbResult(res, dbUser, password) {
 }
 
 module.exports = function(app) {
+
+  //======================================================================
+  //
+  // LOGIN ROUTES
+  //
+  //======================================================================
+
   app.post("/api/createuser", function(req, res) {
     const { password } = req.body;
     db.User.create(req.body).then(dbUser =>
@@ -44,8 +51,32 @@ module.exports = function(app) {
     }).then(dbUser => processUserDbResult(res, dbUser, password));
   });
 
+  //======================================================================
+  //
+  // CATEGORY ROUTES
+  //
+  //======================================================================
+
   app.get("/api/categories", function(req, res) {
     db.Category.find().then(function(results) {
+      res.json(results);
+    });
+  });
+
+  //======================================================================
+  //
+  // HOWL ROUTES
+  //
+  //======================================================================
+
+  app.get("/api/howls/:category", function(req, res) {
+    db.Howl.find({category: req.params.category}).then(function(results) {
+      res.json(results);
+    });
+  });
+
+  app.get("/api/howls", function(req, res) {
+    db.Howl.find().then(function(results) {
       res.json(results);
     });
   });
