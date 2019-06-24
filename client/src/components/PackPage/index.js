@@ -23,7 +23,7 @@ class PackPage extends React.Component {
       chat: ""
     };
   }
-  
+
   loadPack = id => {
     API.getPack(id)
       .then(res =>
@@ -58,13 +58,13 @@ class PackPage extends React.Component {
     return (
       <>
         {/* pack header */}
-        <PackHeader image={this.state.pack.image} packName={this.state.pack.packName} />
+        <PackHeader image={this.state.image} packName={this.state.title} />
         {/* pack description card */}
-        <PackDesc category={this.state.pack.category} description={this.state.pack.description} />
+        <PackDesc category={this.state.category} description={this.state.description} />
         {/* pack members */}
         <Container>
           <Row>
-            {this.state.packMember.map(packMember => (
+            {this.state.members.map(packMember => (
               <PackMember key={packMember._id} {...packMember} />
             ))}
           </Row>
