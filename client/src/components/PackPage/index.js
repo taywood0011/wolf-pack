@@ -7,52 +7,58 @@ import {
 } from "shards-react";
 import PackMember from "../PackMember";
 import PackHeader from "../PackHeader";
+import API from "../../utils/API";
+
 
 class PackPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      title: "",
+      image: "",
+      catagory: "",
+      description: "",
       members: [],
-      about: "",
-      chat: "",
-      formData: ""
+      chat: ""
     };
 
-    // loadPack = id =>  {
-    //   API.getPack(id)
-    //     .then(res =>
-    //       this.setState({
-    //         members: res.data,
-    //         about: "",
-    //         chat: "",
-    //         formData: ""
-    //       })
-    //     )
-    //     .catch(err => console.log(err));
-    // };
+     loadPack = id =>  {
+       API.getPack(id)
+         .then(res =>
+           this.setState({
+            title: "",
+            image: "",
+            catagory: "",
+            description: "",
+            members: [],
+            chat: ""
+          })
+        )
+        .catch(err => console.log(err));
+     };
 
-  //   handleInputChange = event => {
-  //     const { name, value } = event.target;
-  //     this.setState({
-  //       [name]: value
-  //     });
+      handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+          [name]: value
+        });
 
-  //     return null;
-  //   };
-  // }
+        return null;
+      };
+    }
 
-  // componentDidMount() {
-  //   this.loadPack();
+    componentDidMount() {
+      this.loadPack();
   }
 
   render() {
     return (
       <>
-      {/* pack header */}
+        {/* pack header */}
         <PackHeader image={this.state.pack.image} packName={this.state.pack.packName} />
         {/* pack description card */}
-        <PackDesc category={this.state.pack.category} description={this.state.pack.description}/>
+        <PackDesc category={this.state.pack.category} description={this.state.pack.description} />
         {/* pack members */}
         <Container>
           <Row>
@@ -62,7 +68,7 @@ class PackPage extends React.Component {
           </Row>
         </Container>
         {/* pack chat */}
-       <PackChat newMessage={this.state.newMessage}/>
+        <PackChat newMessage={this.state.newMessage} />
       </>
     );
   }

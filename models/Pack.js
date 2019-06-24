@@ -6,11 +6,11 @@ const PackSchema = new Schema({
   image: {type: String, required: true},
   catagory: {type: String, required: true},
   description: {type: String, required: true},
-  members: {type: []},
+  members: {type: Array},
   chat: {type: String}
 
   
 });
 
-const Pack = mongoose.model("Category", PackSchema);
+const Pack = mongoose.model("Pack", PackSchema);
 module.exports = Pack
