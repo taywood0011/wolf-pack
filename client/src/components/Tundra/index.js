@@ -3,30 +3,33 @@ import { Container } from "shards-react";
 import ItemCard from "../ItemCard";
 import NewPackPage from "../NewPackPage";
 import "./styles.css";
+import API from "../../utils/API"
 
 class Tundra extends React.Component {
   state = {
     data: []
   };
 
+  inviteHowl = () => {};
+
   getCardData() {
     switch (this.props.currentDisplay) {
       case "howls":
         // insert database call using category in state
 
-        /*
-        API.getHowls({category: this.props.match.params.category})
+        
+        API.getHowls(this.props.match.params.category)
         .then(res => {
             this.setState({
-                data: res.map(item => {
-                        return {...item, btnAction: "Invite", clickFn=this.inviteHowl}
-                    }
-                } 
-            })
+                data: res.data.map(item => {
+                        return {...item, btnAction: "Invite", clickFn: this.inviteHowl, type: "howl"}
+                    })
+              })
         })
-        */
+        
 
         // dummy data instead
+        /*
         this.setState({
           data: [
             {
@@ -51,24 +54,25 @@ class Tundra extends React.Component {
             }
           ]
         });
+        */
         return null;
 
       case "packs":
         // insert database call using category in state
 
         /*
-        API.getGroups({category: this.props.match.params.category})
+        API.getPacks({category: this.props.match.params.category})
             .then(res => {
                 this.setState({
                     data: res.map(item => {
                             return {...item, btnAction: "Join", clickFn=this.joinGroup}
-                        }
-                    } 
+                        })
                 })
             })
         */
 
         // dummy data instead
+        /*
         this.setState({
           data: [
             {
@@ -133,6 +137,7 @@ class Tundra extends React.Component {
             }
           ]
         });
+        */
         return null;
 
       default:
@@ -146,7 +151,7 @@ class Tundra extends React.Component {
   render() {
     return (
       <>
-        <NewPackPage />
+        {/*}<NewPackPage />*/}
         <Container>
           <div className="tundraDisplay">
             {/* Add conditional logic for rendering either this.state.data in ItemCards or the home page */}
@@ -154,7 +159,7 @@ class Tundra extends React.Component {
               <div className="tundra-home">{/* Homepage */}</div>
             ) : (
               this.state.data.map(card => {
-                return <ItemCard key={card.id} {...card} />;
+                return <ItemCard key={card._id} {...card} />;
               })
             )}
           </div>

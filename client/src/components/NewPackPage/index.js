@@ -27,16 +27,20 @@ class NewPackPage extends React.Component {
         name: "username1",
         location: "location",
         packMemberImg: "http://placekitten.com/300/300",
-        _id: "13456"
+        _id: "643"
       },
       {
         name: "username1",
         location: "location",
         packMemberImg: "http://placekitten.com/300/300",
-        _id: "13456"
+        _id: "134245256"
       }
     ],
     newMessage: "Hello World!"
+
+
+
+    
   };
 
   render() {
