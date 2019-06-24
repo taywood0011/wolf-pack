@@ -31,12 +31,15 @@ class CategoryPage extends Component {
         icon: "paw"
       }
     ],
-    dest: "packs"
+    dest: this.props.location.pathname.substring(1, 5)
   };
 
   clickFn = () => {};
 
   render() {
+    
+    console.log(this.props)
+
     return (
       <Container className="category-container">
         <Row>
