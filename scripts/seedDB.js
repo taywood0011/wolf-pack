@@ -9,17 +9,17 @@ const CategoriesSeed = [
   {
     name: "Music",
     image: "http://placekitten.com/300/300",
-    icon: "paw"
+    icon: "headphones"
   },
   {
     name: "Gaming",
     image: "http://placekitten.com/300/300",
-    icon: "paw"
+    icon: "gamepad"
   },
   {
     name: "Web Design",
     image: "http://placekitten.com/300/300",
-    icon: "paw"
+    icon: "object-group"
   },
   {
     name: "Pets",
@@ -27,10 +27,25 @@ const CategoriesSeed = [
     icon: "paw"
   },
   {
+    name: "Sports",
+    image: "http://placekitten.com/300/300",
+    icon: "basketball-ball"
+  },
+  {
+    name: "Entertainment",
+    image: "http://placekitten.com/300/300",
+    icon: "film"
+  },
+  {
+    name: "Outdoors",
+    image: "http://placekitten.com/300/300",
+    icon: "campground"
+  },
+  {
     name: "All",
     image: "http://placekitten.com/300/300",
-    icon: "paw"
-  }
+    icon: "shapes"
+  },
 ];
 
 const HowlSeed = [
