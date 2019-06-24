@@ -37,6 +37,10 @@ class NewPackPage extends React.Component {
       }
     ],
     newMessage: "Hello World!"
+
+
+
+    
   };
 
   render() {

@@ -13,3 +13,14 @@ module.exports = function (app) {
     });
 
 }
+
+app.get("/api/packs/:id", function (req, res) {;
+    db.Pack.findOne({
+        _id: req.params.id
+    })
+        .then(function (dbPack) {
+            res.json(dbPack);
+        });
+});
+
+

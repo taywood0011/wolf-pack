@@ -12,5 +12,8 @@ export default {
     } else {
       return axios.get(`/api/howls`)
     }
+  },
+  getPack: function(id){
+    return axios.get("/api/packs/" + id);
   }
 };
