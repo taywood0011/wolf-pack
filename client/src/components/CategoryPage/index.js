@@ -7,7 +7,7 @@ import API from "../../utils/API"
 class CategoryPage extends Component {
   state = {
     categories: [],
-    dest: "packs"
+    dest: this.props.location.pathname.substring(1, 5)
   };
 
   componentDidMount() {
@@ -21,6 +21,9 @@ class CategoryPage extends Component {
   };
 
   render() {
+    
+    console.log(this.props)
+
     return (
       <Container className="category-container">
         <Row>

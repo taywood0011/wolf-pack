@@ -1,5 +1,6 @@
 import React from "react";
 import { Col } from "shards-react";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 function Category(props) {
@@ -7,9 +8,9 @@ function Category(props) {
     <Col sm="12" md="4" lg="3">
       <img className="category-img" src={props.image} alt={props.title} />
       <div className={`category-center fas fa-${props.icon} fa-5x`} />
-      <a href={`/${props.dest}/${props.title}`} className="category-title">
+      <Link to={`/${props.dest}s/${props.title}`} className="category-title">
         {props.title}
-      </a>
+      </Link>
     </Col>
   );
 }
