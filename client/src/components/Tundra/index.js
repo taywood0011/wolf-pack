@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "shards-react";
 import ItemCard from "../ItemCard";
-import NewPackPage from "../NewPackPage";
+import PackPage from "../PackPage";
 import "./styles.css";
 import API from "../../utils/API"
 
@@ -151,7 +151,11 @@ class Tundra extends React.Component {
   render() {
     return (
       <>
+<<<<<<< HEAD
+        <PackPage />
+=======
         {/*}<NewPackPage />*/}
+>>>>>>> 0a08a518b08bfcb9367ba39bbc14fa2ffa87c9f5
         <Container>
           <div className="tundraDisplay">
             {/* Add conditional logic for rendering either this.state.data in ItemCards or the home page */}
