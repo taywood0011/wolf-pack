@@ -6,8 +6,9 @@ const PackSchema = new Schema({
   image: {type: String, required: true},
   catagory: {type: String, required: true},
   description: {type: String, required: true},
-  members: [],
-  chat: ""
+  members: {type: []},
+  chat: {type: String}
+
   
 });
 
