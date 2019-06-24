@@ -9,6 +9,7 @@ import NavComponent from "./components/NavComponent";
 import LoginComponent from "./components/LoginComponent";
 import UserContext from "./context/UserContext";
 import HomePage from "./components/LoginComponent/Homepage";
+import PackPage from "./components/PackPage"
 
 class App extends Component {
   // ==================================================
@@ -61,6 +62,11 @@ class App extends Component {
             exact
             path="/packs/:category"
             render={props => <Tundra currentDisplay="packs" {...props} />}
+          />
+          <Route
+            exact
+            path="/pack"
+            render={props => <PackPage currentDisplay="packPage" {...props} />}
           />
 
           <UserContext.Provider value={{ setUser, user }}>
