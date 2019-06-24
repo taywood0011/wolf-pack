@@ -8,6 +8,7 @@ import {
 import PackMember from "../PackMember";
 import PackHeader from "../PackHeader";
 import API from "../../utils/API";
+import NewMessage from "../NewMessage";
 
 
 class PackPage extends React.Component {
@@ -39,16 +40,20 @@ class PackPage extends React.Component {
       .catch(err => console.log(err));
   };
 
-  //   handleInputChange = event => {
-  //     const { name, value } = event.target;
-  //     this.setState({
-  //       [name]: value
-  //     });
 
-  //     return null;
-  //   };
+     handleInputChange = event => {
+       const { name, value } = event.target;
+       this.setState({
+         [name]: value
+       });
+   };
 
-  // }
+   handleChatSubmit = ()=> {
+    this.setState({
+      chat: NewMessage
+    });
+  };
+   
 
   componentDidMount() {
     this.loadPack();
