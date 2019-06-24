@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Categories = require("../models/Categories");
 const jwt = require("jsonwebtoken");
 const authWare = require("../middleware/authware");
 
@@ -42,4 +43,13 @@ module.exports = function(app) {
       username
     }).then(dbUser => processUserDbResult(res, dbUser, password));
   });
+
+  app.get("/api/categories", function (req, res) {
+    console.log(req.body);
+    Categories.findAll()
+        .then(function (results) {
+            res.json(results);
+        });
+});
+
 };
