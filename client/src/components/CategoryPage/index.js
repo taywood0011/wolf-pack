@@ -2,39 +2,23 @@ import React, { Component } from "react";
 import { Container, Row } from "shards-react";
 import Category from "../Category";
 import "./style.css";
+import API from "../../utils/API"
 
 class CategoryPage extends Component {
   state = {
-    categories: [
-      {
-        _id: 1,
-        image: "http://placekitten.com/300/300",
-        title: "Pets",
-        icon: "paw",
-      },
-      {
-        _id: 2,
-        image: "http://placekitten.com/300/300",
-        title: "Pets",
-        icon: "paw"
-      },
-      {
-        _id: 3,
-        image: "http://placekitten.com/300/300",
-        title: "Pets",
-        icon: "paw"
-      },
-      {
-        _id: 4,
-        image: "http://placekitten.com/300/300",
-        title: "Pets",
-        icon: "paw"
-      }
-    ],
+    categories: [],
     dest: this.props.location.pathname.substring(1, 5)
   };
 
-  clickFn = () => {};
+  componentDidMount() {
+    this.loadCategories();
+  }
+
+  loadCategories = () => {
+    API.showCategories()
+      .then(res => this.setState({ categories: res.data }))
+      .catch(err => console.log(err));
+  };
 
   render() {
     
@@ -51,11 +35,5 @@ class CategoryPage extends Component {
     );
   }
 }
-
-/*
-image={category.image}
-title={category.title}
-icon={category.icon}
-*/
 
 export default CategoryPage;
