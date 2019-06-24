@@ -6,10 +6,10 @@ import "./style.css";
 function Category(props) {
   return (
     <Col sm="12" md="4" lg="3">
-      <img className="category-img" src={props.image} alt={props.title} />
+      <img className="category-img" src={props.image} alt={props.name} />
       <div className={`category-center fas fa-${props.icon} fa-5x`} />
-      <Link to={`/${props.dest}s/${props.title}`} className="category-title">
-        {props.title}
+      <Link to={`/${props.dest}s/${props.name.toLowerCase()}`} className="category-title">
+        {props.name}
       </Link>
     </Col>
   );
