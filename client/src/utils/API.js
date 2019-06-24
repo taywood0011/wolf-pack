@@ -6,6 +6,13 @@ export default {
     
   },
 
+  getHowls: function (category) {
+    if (category !== "all") {
+    return axios.get(`/api/howls/${category.toLowerCase()}`)
+    } else {
+      return axios.get(`/api/howls`)
+    }
+  },
   getPack: function(id){
     return axios.get("/api/packs/" + id);
   }

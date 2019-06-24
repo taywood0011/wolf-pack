@@ -49,15 +49,17 @@ export default class ItemCard extends React.Component {
           <CardImg src={this.props.img || "https://place-hold.it/300x200"} />
           <CardBody>
             <CardTitle><h2>{this.props.title || "Title"}</h2></CardTitle>
-            <h4>{this.props.category || "pets"}</h4>
-            <h6>{this.props.body || "lorem ipsim dolor imet"}</h6>
+            <h4>{this.props.category}</h4>
+            <h6>{this.props.description || "lorem ipsim dolor imet"}</h6>
           </CardBody>
         </Card>
 
         <Modal open={this.state.open} toggle={this.toggle}>
-          <ModalHeader>{this.props.title}</ModalHeader>
+          <ModalHeader>
+            {this.props.title} by {this.props.author}
+          </ModalHeader>
 
-          <ModalBody>{this.props.body}</ModalBody>
+          <ModalBody>{this.props.description}</ModalBody>
 
           <Container>
             <Row>
