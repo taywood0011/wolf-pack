@@ -22,34 +22,36 @@ class PackPage extends React.Component {
       members: [],
       chat: ""
     };
-
-     loadPack = id =>  {
-       API.getPack(id)
-         .then(res =>
-           this.setState({
-            title: "",
-            image: "",
-            catagory: "",
-            description: "",
-            members: [],
-            chat: ""
-          })
-        )
-        .catch(err => console.log(err));
-     };
-
-      handleInputChange = event => {
-        const { name, value } = event.target;
+  }
+  
+  loadPack = id => {
+    API.getPack(id)
+      .then(res =>
         this.setState({
-          [name]: value
-        });
+          title: "",
+          image: "",
+          catagory: "",
+          description: "",
+          members: [],
+          chat: ""
+        })
+      )
+      .catch(err => console.log(err));
+  };
 
-        return null;
-      };
-    }
+  //   handleInputChange = event => {
+  //     const { name, value } = event.target;
+  //     this.setState({
+  //       [name]: value
+  //     });
 
-    componentDidMount() {
-      this.loadPack();
+  //     return null;
+  //   };
+
+  // }
+
+  componentDidMount() {
+    this.loadPack();
   }
 
   render() {
