@@ -19,11 +19,6 @@ class AvatarPage extends Component {
       .catch(err => console.log(err));
   };
 
-  assignAvatar = id => {
-    API.setAvatar(id)
-    this.props.history.push(`/profile`);
-  }
-
   render() {
     console.log(this.props);
 
@@ -34,7 +29,7 @@ class AvatarPage extends Component {
             <Avatar
               key={avatar._id}
               {...avatar}
-              assignAvatar={() => this.assignAvatar(avatar._id)}
+              handleClick={() => this.props.assignAvatar(avatar.image)}
             />
           ))}
         </Row>

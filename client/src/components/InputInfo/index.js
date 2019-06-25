@@ -3,6 +3,8 @@ import "./style.css";
 import { Form, FormInput, FormTextarea, FormGroup, Button } from "shards-react";
 import Auth from "../../utils/Auth";
 import UserContext from "../../context/UserContext";
+import { Route, Link } from "react-router-dom";
+import AvatarPage from "../AvatarPage";
 
 class InputInfo extends Component {
   static contextType = UserContext;
@@ -11,7 +13,15 @@ class InputInfo extends Component {
     location: "",
     username: "",
     password: "",
-    userImg: ""
+    userAvatar: ""
+  };
+
+  assignAvatar = image => {
+    console.log(image);
+    this.setState({
+      userAvatar: image
+    });
+    this.props.history.push("/profile");
   };
 
   changeHandler = e => {
@@ -21,13 +31,20 @@ class InputInfo extends Component {
 
   createHandler = e => {
     e.preventDefault();
-    const { username, password, description, location} = this.state;
-    if (username && password && description && location) {
+    const {
+      username,
+      password,
+      description,
+      location,
+      userAvatar
+    } = this.state;
+    if (username && password && description && location && userAvatar) {
       Auth.createUser(
         username,
         password,
         location,
         description,
+        userAvatar,
         response => {
           this.context.setUser(response);
           this.props.history.push("/");
@@ -42,7 +59,11 @@ class InputInfo extends Component {
         <div className="img-container">
           <img
             className="edit-img"
-            src="http://placekitten.com/300/300"
+            src={
+              !this.state.userAvatar
+                ? "http://placekitten.com/300/300"
+                : this.state.userAvatar
+            }
             alt="choose avatar"
           />
           <div className="img-text-center">
@@ -53,7 +74,8 @@ class InputInfo extends Component {
                 squared
                 size="md"
                 theme="light"
-                href="/avatarpage"
+                to={`${this.props.match.path}/avatar`}
+                tag={Link}
               >
                 Choose An Image
               </Button>{" "}
@@ -66,7 +88,9 @@ class InputInfo extends Component {
               <FormInput
                 id="username"
                 name="username"
-                placeholder="Username"
+                placeholder={
+                  !this.state.username ? "Username" : this.state.userAvatar
+                }
                 type="text"
                 value={this.state.username}
                 onChange={this.changeHandler}
@@ -107,6 +131,13 @@ class InputInfo extends Component {
             Submit
           </Button>
         </div>
+        <Route
+          exact
+          path={`${this.props.match.path}/avatar`}
+          render={props => (
+            <AvatarPage {...props} assignAvatar={this.assignAvatar} />
+          )}
+        />
       </>
     );
   }

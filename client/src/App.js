@@ -12,6 +12,7 @@ import HomePage from "./components/LoginComponent/Homepage";
 import PackPage from "./components/PackPage";
 import AvatarPage from "./components/AvatarPage";
 
+
 class App extends Component {
   state = {
     user: null
@@ -65,10 +66,8 @@ class App extends Component {
           <UserContext.Provider value={{ setUser, user }}>
             <ProtectedRoute exact path="/" component={HomePage} />
             <Route exact path="/login" component={LoginComponent} />
-            <Route exact path="/profile" component={InputInfo} />
-            <Route exact path="/avatarpage" component={AvatarPage} />
+            <Route path="/profile" component={InputInfo} />
           </UserContext.Provider>
-
           <FooterComponent />
         </div>
       </Router>

@@ -4,6 +4,7 @@ import {
     CardBody,
     CardHeader,
     Container,
+    Button
   } from "shards-react";
 
 
@@ -14,6 +15,7 @@ import {
           <CardHeader>{props.category}</CardHeader>
           <CardBody>
             <p>{props.description}</p>
+            <Button className="pill-button" theme="info" size="sm" style={{ float: "right" }}>edit</Button>
           </CardBody>
         </Card>
       </Container>
