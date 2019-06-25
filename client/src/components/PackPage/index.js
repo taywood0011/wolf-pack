@@ -8,6 +8,7 @@ import {
 import PackMember from "../PackMember";
 import PackHeader from "../PackHeader";
 import API from "../../utils/API";
+import NewMessage from "../NewMessage";
 
 
 class PackPage extends React.Component {
@@ -22,47 +23,53 @@ class PackPage extends React.Component {
       members: [],
       chat: ""
     };
+  }
 
-     loadPack = id =>  {
-       API.getPack(id)
-         .then(res =>
-           this.setState({
-            title: "",
-            image: "",
-            catagory: "",
-            description: "",
-            members: [],
-            chat: ""
-          })
-        )
-        .catch(err => console.log(err));
-     };
-
-      handleInputChange = event => {
-        const { name, value } = event.target;
+  loadPack = id => {
+    API.getPack(id)
+      .then(res =>
         this.setState({
-          [name]: value
-        });
+          title: "",
+          image: "",
+          catagory: "",
+          description: "",
+          members: [],
+          chat: ""
+        })
+      )
+      .catch(err => console.log(err));
+  };
 
-        return null;
-      };
-    }
 
-    componentDidMount() {
-      this.loadPack();
+     handleInputChange = event => {
+       const { name, value } = event.target;
+       this.setState({
+         [name]: value
+       });
+   };
+
+   handleChatSubmit = ()=> {
+    this.setState({
+      chat: NewMessage
+    });
+  };
+   
+
+  componentDidMount() {
+    this.loadPack();
   }
 
   render() {
     return (
       <>
         {/* pack header */}
-        <PackHeader image={this.state.pack.image} packName={this.state.pack.packName} />
+        <PackHeader image={this.state.image} packName={this.state.title} />
         {/* pack description card */}
-        <PackDesc category={this.state.pack.category} description={this.state.pack.description} />
+        <PackDesc category={this.state.category} description={this.state.description} />
         {/* pack members */}
         <Container>
           <Row>
-            {this.state.packMember.map(packMember => (
+            {this.state.members.map(packMember => (
               <PackMember key={packMember._id} {...packMember} />
             ))}
           </Row>

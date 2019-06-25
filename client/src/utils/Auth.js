@@ -4,6 +4,7 @@ function Auth() {
   let loggedIn = false;
 
   function logIn(username, password, cb) {
+    
     axios
       .post("/api/authenticate", { username, password })
       .then(response => {
@@ -18,9 +19,10 @@ function Auth() {
       });
   }
 
-  function createUser(username, password, cb) {
+  function createUser(username, password, location, description, cb) {
+    console.log("cb:",cb)
     axios
-      .post("/api/createuser", { username, password })
+      .post("/api/createuser", { username, password, location, description })
       .then(response => {
         localStorage.setItem("token", response.data.token);
         loggedIn = true;

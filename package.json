@@ -24,7 +24,7 @@
     "url": "https://github.com/taywood0011/wolf-pack/issues"
   },
   "devDependencies": {
-    "concurrently": "^3.5.0",
+    "concurrently": "^3.6.1",
     "nodemon": "^1.11.0"
   },
   "homepage": "https://github.com/taywood0011/wolf-pack#readme",

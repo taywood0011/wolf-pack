@@ -9,6 +9,7 @@ import NavComponent from "./components/NavComponent";
 import LoginComponent from "./components/LoginComponent";
 import UserContext from "./context/UserContext";
 import HomePage from "./components/LoginComponent/Homepage";
+import PackPage from "./components/PackPage"
 
 class App extends Component {
   // ==================================================
@@ -44,7 +45,7 @@ class App extends Component {
           </UserContext.Provider>
           <Route exact path="/packCategories" component={CategoryPage} />
           <Route exact path="/howlCategories" component={CategoryPage} />
-          <Route exact path="/profile" component={InputInfo} />
+          
           <Route exact path="/newHowl" component={InputInfo} />
           <Route exact path="/newPack" component={InputInfo} />
           <Route
@@ -67,10 +68,16 @@ class App extends Component {
             path="/packs/:category"
             render={props => <Tundra currentDisplay="packs" {...props} />}
           />
+          <Route
+            exact
+            path="/pack"
+            render={props => <PackPage currentDisplay="packPage" {...props} />}
+          />
 
           <UserContext.Provider value={{ setUser, user }}>
             <ProtectedRoute exact path="/" component={HomePage} />
             <Route exact path="/login" component={LoginComponent} />
+            <Route exact path="/profile" component={InputInfo} />
           </UserContext.Provider>
 
           <FooterComponent />
