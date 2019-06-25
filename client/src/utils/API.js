@@ -31,6 +31,14 @@ export default {
   },
 
   getPack: function(id){
-    return axios.get("/api/packs/" + id);
+    return axios.get("/api/pack/" + id);
+  },
+
+  getPacks: function(category){
+    return axios.get("/api/packs/" + category.toLowerCase());
+  },
+
+  joinPack: function (id, user) {
+    return axios.post(`/api/packs/${id}`, user);
   }
 };

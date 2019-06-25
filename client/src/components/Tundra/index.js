@@ -11,6 +11,10 @@ class Tundra extends React.Component {
   };
 
   inviteHowl = () => {};
+  
+  joinPack = (pack, user) => {
+
+  }
 
   getCardData() {
     switch (this.props.currentDisplay) {
@@ -77,19 +81,19 @@ class Tundra extends React.Component {
       case "packs":
         // insert database call using category in state
 
-        /*
-        API.getPacks({category: this.props.match.params.category})
+        
+        API.getPacks(this.props.match.params.category)
             .then(res => {
                 this.setState({
-                    data: res.map(item => {
-                            return {...item, btnAction: "Join", clickFn=this.joinGroup}
+                    data: res.data.map(item => {
+                            return {...item, btnAction: "Join", clickFn: this.joinPack}
                         })
                 })
             })
-        */
+        
 
         // dummy data instead
-
+        /*
         this.setState({
           data: [
             {
@@ -154,6 +158,7 @@ class Tundra extends React.Component {
             }
           ]
         });
+        */
 
         return null;
 

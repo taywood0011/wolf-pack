@@ -2,6 +2,7 @@ const User = require("../models/User");
 const db = require("../models");
 const jwt = require("jsonwebtoken");
 const authWare = require("../middleware/authware");
+var mongoose = require("mongoose");
 
 function processUserDbResult(res, dbUser, password) {
   if (!dbUser) {
@@ -30,7 +31,6 @@ function processUserDbResult(res, dbUser, password) {
 }
 
 module.exports = function(app) {
-
   //======================================================================
   //
   // LOGIN ROUTES
@@ -70,7 +70,7 @@ module.exports = function(app) {
   //======================================================================
 
   app.get("/api/howls/:category", function(req, res) {
-    db.Howl.find({category: req.params.category}).then(function(results) {
+    db.Howl.find({ category: req.params.category }).then(function(results) {
       res.json(results);
     });
   });
@@ -82,7 +82,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/howls/author/:username", function(req, res) {
-    db.Howl.find({author: req.params.username}).then(function(results) {
+    db.Howl.find({ author: req.params.username }).then(function(results) {
       res.json(results);
     });
   });
@@ -94,15 +94,30 @@ module.exports = function(app) {
   //
   //======================================================================
 
-  app.get("/api/packs/:id", function(req, res) {
+  app.get("/api/packs/:category", function(req, res) {
+    db.Pack.find({ category: req.params.category }).then(function(results) {
+      res.json(results);
+    });
+  });
+
+  app.get("/api/pack/:id", function(req, res) {
     db.Pack.findById(req.params.id).then(function(results) {
       res.json(results);
     });
   });
 
+  app.post("/api/packs/:id", function(req, res) {
+    console.log("Request to join pack recieved")
+    db.Pack.findByIdAndUpdate(
+      req.params.id,
+      { $push: { members: req.body } },
+      { new: true }).then(function(results) {
+        console.log(results)
+        res.json(results)
+      })
+  });
+
   //======================================================================
-
-
   //
   // AVATAR ROUTES
   //
@@ -113,5 +128,4 @@ module.exports = function(app) {
       res.json(results);
     });
   });
-
 };
