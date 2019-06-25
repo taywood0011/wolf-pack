@@ -38,6 +38,7 @@ module.exports = function(app) {
   //======================================================================
 
   app.post("/api/createuser", function(req, res) {
+    console.log("create user api route!!!!")
     const { password } = req.body;
     db.User.create(req.body).then(dbUser =>
       processUserDbResult(res, dbUser, password)
