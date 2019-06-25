@@ -27,16 +27,12 @@ class PackPage extends React.Component {
 
   loadPack = id => {
     API.getPack(id)
-      .then(res =>
+      .then(res => {
+        console.log(res)
         this.setState({
-          title: "",
-          image: "",
-          catagory: "",
-          description: "",
-          members: [],
-          chat: ""
+          ...res.data
         })
-      )
+      })
       .catch(err => console.log(err));
   };
 
@@ -56,14 +52,14 @@ class PackPage extends React.Component {
    
 
   componentDidMount() {
-    this.loadPack();
+    this.loadPack(this.props.match.params.id);
   }
 
   render() {
     return (
       <>
         {/* pack header */}
-        <PackHeader image={this.state.image} packName={this.state.title} />
+        <PackHeader image={this.state.image} title={this.state.title} />
         {/* pack description card */}
         <PackDesc category={this.state.category} description={this.state.description} />
         {/* pack members */}

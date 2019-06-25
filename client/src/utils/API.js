@@ -16,7 +16,16 @@ export default {
       return axios.get(`/api/howls`);
     }
   },
-  getPack: function(id) {
+
+  getUserHowls: function (username) {
+    return axios.get(`/api/howls/author/${username}`)
+  },
+
+  postHowl: function (howl) {
+    return axios.post(`/api/howls`, howl)
+  },
+
+  getPack: function(id){
     return axios.get("/api/packs/" + id);
   }
 };

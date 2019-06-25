@@ -37,14 +37,14 @@ export default class NavComponent extends React.Component {
   togglePacks() {
     this.setState({
       ...this.state,
-      packsOpen: !this.state.packsOpen,
+      packsOpen: !this.state.packsOpen
     });
   }
 
   toggleHowls() {
     this.setState({
       ...this.state,
-      howlsOpen: !this.state.howlsOpen,
+      howlsOpen: !this.state.howlsOpen
     });
   }
 
@@ -142,7 +142,11 @@ export default class NavComponent extends React.Component {
                 Howls
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem>My Howls</DropdownItem>
+                <DropdownItem>
+                  <Link to={"/howls/authors/" + localStorage.getItem("username")}>
+                    My Howls
+                  </Link>
+                </DropdownItem>
                 <DropdownItem>
                   <Link
                     to="/howlCategories"
