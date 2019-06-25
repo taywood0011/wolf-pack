@@ -88,10 +88,26 @@ module.exports = function(app) {
   });
 
   //======================================================================
+
+  //
+  // PACK ROUTES
+  //
+  //======================================================================
+
+  app.get("/api/packs/:id", function(req, res) {
+    db.Pack.findById(req.params.id).then(function(results) {
+      res.json(results);
+    });
+  });
+
+  //======================================================================
+=======
+
   //
   // AVATAR ROUTES
   //
   //======================================================================
+
   app.get("/api/avatars", function(req, res) {
     db.Avatar.find().then(function(results) {
       res.json(results);

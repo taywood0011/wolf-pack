@@ -57,7 +57,7 @@ class App extends Component {
           />
           <Route
             exact
-            path="/pack"
+            path="/pack/:id"
             render={props => <PackPage currentDisplay="packPage" {...props} />}
           />
 
