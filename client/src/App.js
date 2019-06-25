@@ -10,6 +10,8 @@ import LoginComponent from "./components/LoginComponent";
 import UserContext from "./context/UserContext";
 import HomePage from "./components/LoginComponent/Homepage";
 import PackPage from "./components/PackPage";
+import AvatarPage from "./components/AvatarPage";
+
 
 class App extends Component {
   state = {
@@ -38,21 +40,23 @@ class App extends Component {
             path="/noplease"
             render={() => <Tundra currentDisplay="home" />}
           />
-          <Route
-            exact
-            path="/howls/:category"
-            render={props => <Tundra currentDisplay="howls" {...props} />}
-          />
-          <Route
-            exact
-            path="/howls/authors/:author"
-            render={props => <Tundra currentDisplay="howls" {...props} />}
-          />
-          <Route
-            exact
-            path="/packs/:category"
-            render={props => <Tundra currentDisplay="packs" {...props} />}
-          />
+          <UserContext.Provider value={{ setUser, user }}>
+            <Route
+              exact
+              path="/howls/:category"
+              render={props => <Tundra currentDisplay="howls" {...props} />}
+            />
+            <Route
+              exact
+              path="/howls/authors/:author"
+              render={props => <Tundra currentDisplay="howls" {...props} />}
+            />
+            <Route
+              exact
+              path="/packs/:category"
+              render={props => <Tundra currentDisplay="packs" {...props} />}
+            />
+          </UserContext.Provider>
           <Route
             exact
             path="/pack/:id"

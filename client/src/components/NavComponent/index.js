@@ -58,7 +58,6 @@ export default class NavComponent extends React.Component {
   }
 
   render() {
-    console.log("rendering nav component");
     return (
       <UserContext.Consumer>
         {context =>

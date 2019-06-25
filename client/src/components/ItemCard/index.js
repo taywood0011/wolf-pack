@@ -13,11 +13,14 @@ import {
   Col
 } from "shards-react";
 import "./styles.css";
+import API from "../../utils/API";
+import UserContext from "../../context/UserContext";
 
 export default class ItemCard extends React.Component {
+  static contextType = UserContext;
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       open: false,
       type: props.type
     };
@@ -30,25 +33,39 @@ export default class ItemCard extends React.Component {
     });
   }
 
-  clickFn = () => {
-    if(this.state.type === "howl") {
+  clickFn = (id, user) => {
+    if (this.state.type === "howl") {
       //invite to group
-      console.log("invited");
       this.toggle();
     } else {
       //request to join
-      console.log("requested");
-      this.toggle();
+
+      API.joinPack(id, user)
+        .then(response => {
+          this.toggle();
+          console.log("Response:", response);
+        })
+        .catch(err => {
+          console.log(err);
+          this.toggle();
+        });
+
+
     }
-  }
+  };
 
   render() {
+    let userID;
+    let click = this.clickFn;
+    let props = this.props._id
     return (
       <div>
         <Card style={{ maxWidth: "300px" }} onClick={this.toggle}>
           <CardImg src={this.props.img || "https://place-hold.it/300x200"} />
           <CardBody>
-            <CardTitle><h2>{this.props.title || "Title"}</h2></CardTitle>
+            <CardTitle>
+              <p>{this.props.title || "Title"}</p>
+            </CardTitle>
             <h4>{this.props.category}</h4>
             <h6>{this.props.description || "lorem ipsim dolor imet"}</h6>
           </CardBody>
@@ -76,16 +93,29 @@ export default class ItemCard extends React.Component {
                 </Button>
               </Col>
               <Col sm="6">
-                <Button
-                  className="modal-button"
-                  block
-                  squared
-                  outline
-                  theme="info"
-                  onClick={this.clickFn}
-                >
-                  {this.props.btnAction || "Join"}
-                </Button>
+                <UserContext.Consumer>
+                  {context => {
+
+                    return (
+                      <Button
+                        className="modal-button"
+                        block
+                        squared
+                        outline
+                        theme="info"
+                        onClick={() => {
+                          API.getUser(context.user.username).then(response => {
+                            userID = response.data._id;
+                            console.log("userID:",userID)
+                            click(props, userID);
+                          });
+                        }}
+                      >
+                        {this.props.btnAction || "Join"}
+                      </Button>
+                    );
+                  }}
+                </UserContext.Consumer>
               </Col>
             </Row>
           </Container>

@@ -5,6 +5,10 @@ export default {
     return axios.get("/api/categories");
   },
 
+  getUser: function (username) {
+    return axios.get("/api/user/" + username)
+  },
+
   showAvatars: function() {
     return axios.get("/api/avatars");
   },
@@ -30,6 +34,14 @@ export default {
   },
 
   getPack: function(id){
-    return axios.get("/api/packs/" + id);
+    return axios.get("/api/pack/" + id);
+  },
+
+  getPacks: function(category){
+    return axios.get("/api/packs/" + category.toLowerCase());
+  },
+
+  joinPack: function (id, user) {
+    return axios.post(`/api/packs/${id}`, {_id: user});
   }
 };
