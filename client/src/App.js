@@ -33,7 +33,7 @@ class App extends Component {
           <Route exact path="/packCategories" component={CategoryPage} />
           <Route exact path="/howlCategories" component={CategoryPage} />
 
-          <Route path="/newHowl" component={InputInfo} />
+          <Route path="/newHowl" component={CreatePack} />
           <Route path="/newPack" component={CreatePack} />
             <Route
               exact

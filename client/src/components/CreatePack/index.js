@@ -15,14 +15,16 @@ class CreatePack extends Component {
     description: ""
   };
 
-  assignPackAvatar = image => {
+  assignAvatar = image => {
     console.log(image);
     this.setState({
       image: image
     });
-    this.props.history.push("/newPack");
+    window.location.pathname === "/newPack/avatar"
+    ? this.props.history.push("/newPack")
+    : this.props.history.push("/newHowl");
   };
-
+ 
   changeHandler = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -31,10 +33,12 @@ class CreatePack extends Component {
   createHandler = e => {
     e.preventDefault();
     const { title, image, category, description } = this.state;
-    if (title && image && category && description) {
-      API.postPack(this.state);
+    window.location.pathname === "/newPack"
+                    ? API.postPack(this.state)
+                    : API.postHowl(this.state);
+   
       this.props.history.push("/packCategories");
-    }
+    
   };
 
   render() {
@@ -109,7 +113,7 @@ class CreatePack extends Component {
           exact
           path={`${this.props.match.path}/avatar`}
           render={props => (
-            <AvatarPage {...props} assignAvatar={this.assignPackAvatar} />
+            <AvatarPage {...props} assignAvatar={this.assignAvatar} />
           )}
         />
       </>
