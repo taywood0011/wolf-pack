@@ -13,21 +13,7 @@ import PackPage from "./components/PackPage"
 import AvatarPage from "./components/AvatarPage"
 
 class App extends Component {
-  // ==================================================
-  // LOGIC FOR LOADING CATEGORY CARDS SHOULD GO HERE
-
-  // componentDidMount() {
-  //      this.loadCategories();
-  //  }
-  //  loadCategories = () => {
-  //     API.getCategories()
-  //     .then(res =>
-  //       this.setState({ category: res.data, image: "", icon: ""})
-  //     )
-  //     .catch(err => console.log(err));
-  //  }
-  // ==================================================
-
+  
   state = {
     user: null
   };

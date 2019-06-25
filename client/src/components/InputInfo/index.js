@@ -10,7 +10,8 @@ class InputInfo extends Component {
     description: "",
     location: "",
     username: "",
-    password: ""
+    password: "",
+    userImg: ""
   };
 
   changeHandler = e => {
@@ -20,12 +21,18 @@ class InputInfo extends Component {
 
   createHandler = e => {
     e.preventDefault();
-    const { username, password, description, location } = this.state;
+    const { username, password, description, location} = this.state;
     if (username && password && description && location) {
-      Auth.createUser(username, password, location, description, response => {
-        this.context.setUser(response);
-        this.props.history.push("/");
-      }).then(this.goHome());
+      Auth.createUser(
+        username,
+        password,
+        location,
+        description,
+        response => {
+          this.context.setUser(response);
+          this.props.history.push("/");
+        }
+      );
     }
   };
 
@@ -36,7 +43,7 @@ class InputInfo extends Component {
           <img
             className="edit-img"
             src="http://placekitten.com/300/300"
-            alt="add-img"
+            alt="choose avatar"
           />
           <div className="img-text-center">
             <span>
