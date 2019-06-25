@@ -5,7 +5,7 @@ function PackHeader(props) {
   return (
     <Container className="jumbotron">
           <img src={props.image} alt="packImage" />
-          <h1> {props.packName} </h1>
+          <h1> {props.title} </h1>
         </Container>
   );
 }
