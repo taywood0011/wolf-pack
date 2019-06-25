@@ -81,4 +81,10 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/howls/author/:username", function(req, res) {
+    db.Howl.find({author: req.params.username}).then(function(results) {
+      res.json(results);
+    });
+  });
+
 };

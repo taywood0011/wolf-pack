@@ -59,6 +59,11 @@ class App extends Component {
           />
           <Route
             exact
+            path="/howls/authors/:author"
+            render={props => <Tundra currentDisplay="howls" {...props} />}
+          />
+          <Route
+            exact
             path="/packs/:category"
             render={props => <Tundra currentDisplay="packs" {...props} />}
           />

@@ -1,9 +1,9 @@
 import React from "react";
 import { Container } from "shards-react";
 import ItemCard from "../ItemCard";
-import NewPackPage from "../NewPackPage";
+// import NewPackPage from "../NewPackPage";
 import "./styles.css";
-import API from "../../utils/API"
+import API from "../../utils/API";
 
 class Tundra extends React.Component {
   state = {
@@ -17,16 +17,33 @@ class Tundra extends React.Component {
       case "howls":
         // insert database call using category in state
 
-        
-        API.getHowls(this.props.match.params.category)
-        .then(res => {
+        try {
+          API.getHowls(this.props.match.params.category).then(res => {
             this.setState({
-                data: res.data.map(item => {
-                        return {...item, btnAction: "Invite", clickFn: this.inviteHowl, type: "howl"}
-                    })
+              data: res.data.map(item => {
+                return {
+                  ...item,
+                  btnAction: "Invite",
+                  clickFn: this.inviteHowl,
+                  type: "howl"
+                };
               })
-        })
-        
+            });
+          });
+        } catch (err) {
+          API.getUserHowls(this.props.match.params.author).then(res => {
+            this.setState({
+              data: res.data.map(item => {
+                return {
+                  ...item,
+                  btnAction: "Invite",
+                  clickFn: this.inviteHowl,
+                  type: "howl"
+                };
+              })
+            });
+          });
+        }
 
         // dummy data instead
         /*
@@ -72,7 +89,7 @@ class Tundra extends React.Component {
         */
 
         // dummy data instead
-        /*
+
         this.setState({
           data: [
             {
@@ -137,10 +154,11 @@ class Tundra extends React.Component {
             }
           ]
         });
-        */
+
         return null;
 
-      default:
+      case "user":
+        API.getUserHowls(localStorage.getItem("username"));
     }
   }
 
