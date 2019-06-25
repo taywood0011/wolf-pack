@@ -3,6 +3,8 @@ import "./style.css";
 import { Form, FormInput, FormTextarea, FormGroup, Button } from "shards-react";
 import Auth from "../../utils/Auth";
 import UserContext from "../../context/UserContext";
+import { Route, Link } from "react-router-dom";
+import AvatarPage from "../AvatarPage";
 
 class InputInfo extends Component {
   static contextType = UserContext;
@@ -11,7 +13,14 @@ class InputInfo extends Component {
     location: "",
     username: "",
     password: "",
-    userImg: ""
+    userAvatar: ""
+  };
+
+  assignAvatar = id => {
+    this.setState({
+      userAvatar: id
+    });
+    this.props.history.push("/profile");
   };
 
   changeHandler = e => {
@@ -21,13 +30,20 @@ class InputInfo extends Component {
 
   createHandler = e => {
     e.preventDefault();
-    const { username, password, description, location} = this.state;
-    if (username && password && description && location) {
+    const {
+      username,
+      password,
+      description,
+      location,
+      userAvatar
+    } = this.state;
+    if (username && password && description && location && userAvatar) {
       Auth.createUser(
         username,
         password,
         location,
         description,
+        userAvatar,
         response => {
           this.context.setUser(response);
           this.props.history.push("/");
@@ -53,7 +69,8 @@ class InputInfo extends Component {
                 squared
                 size="md"
                 theme="light"
-                href="/avatarpage"
+                to={`${this.props.match.path}/avatar`}
+                tag={Link}
               >
                 Choose An Image
               </Button>{" "}
@@ -107,6 +124,13 @@ class InputInfo extends Component {
             Submit
           </Button>
         </div>
+        <Route
+          exact
+          path={`${this.props.match.path}/avatar`}
+          render={props => (
+            <AvatarPage {...props} assignAvatar={this.assignAvatar} />
+          )}
+        />
       </>
     );
   }

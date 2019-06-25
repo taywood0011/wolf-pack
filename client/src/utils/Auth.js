@@ -19,10 +19,10 @@ function Auth() {
       });
   }
 
-  function createUser(username, password, location, description, cb) {
+  function createUser(username, password, location, description, userAvatar, cb) {
     console.log("cb:",cb)
     axios
-      .post("/api/createuser", { username, password, location, description })
+      .post("/api/createuser", { username, password, location, description, userAvatar })
       .then(response => {
         localStorage.setItem("token", response.data.token);
         loggedIn = true;
