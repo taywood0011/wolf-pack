@@ -14,7 +14,7 @@ const UserSchema = new Schema({
     location: String,
     description: String,
     userAvatar: {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.String,
         ref: "Avatar"
     }
 });
