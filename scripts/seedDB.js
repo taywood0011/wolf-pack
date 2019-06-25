@@ -1,49 +1,47 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-// This file empties the Books collection and inserts the books below
-
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/wpdb");
 
 const CategoriesSeed = [
   {
-    name: "Music",
-    image: "http://placekitten.com/300/300",
+    name: "music",
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561477141/cat-music_pcn9ig.jpg",
     icon: "headphones"
   },
   {
-    name: "Gaming",
-    image: "http://placekitten.com/300/300",
+    name: "gaming",
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561477141/cat-gaming_twcusi.png",
     icon: "gamepad"
   },
   {
-    name: "Web Design",
-    image: "http://placekitten.com/300/300",
+    name: "coding",
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561477141/cat-webdesign_d3butw.jpg",
     icon: "object-group"
   },
   {
-    name: "Pets",
-    image: "http://placekitten.com/300/300",
+    name: "pets",
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561477141/cat-pets_mvjyob.jpg",
     icon: "paw"
   },
   {
-    name: "Sports",
-    image: "http://placekitten.com/300/300",
+    name: "sports",
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561477141/cat-sports_ajswo3.jpg",
     icon: "basketball-ball"
   },
   {
-    name: "Entertainment",
-    image: "http://placekitten.com/300/300",
+    name: "entertainment",
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561477141/cat-entertainment_dkvkjg.jpg",
     icon: "film"
   },
   {
-    name: "Outdoors",
-    image: "http://placekitten.com/300/300",
+    name: "outdoors",
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561477141/cat-outdoor_wlqmbq.jpg",
     icon: "campground"
   },
   {
-    name: "All",
-    image: "http://placekitten.com/300/300",
+    name: "all",
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561477396/cat-all_gzoqrr.jpg",
     icon: "shapes"
   },
 ];
@@ -51,61 +49,59 @@ const CategoriesSeed = [
 
 const HowlSeed = [
   {
-    title: "CaptnDestructo",
-    image: "",
+    author: "CaptnDestructo",
+    img: "",
     title: "Forming Electro-Swing Band",
     description:
       "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
     category: "music"
   },
   {
-    title: "Anonymous",
-    image: "",
+    author: "Anonymous",
+    img: "",
     title: "Looking for study group",
     description:
       "Do you need help learning web dedvelopment? Me too. That's why I created this howl. Please help me. Please.",
-    category: "web development"
+    category: "coding"
   },
   {
-    title: "FSAisGood62",
-    image: "",
+    author: "FSAisGood62",
+    img: "",
     title: "Full Stack Attack Fan Group",
     description:
       "I love Full Stack Attack and am looking for people to play with and truly appreciate all the hilarious jokes hidden within.",
     category: "gaming"
   },
   {
-    title: "Xx_bootcamp_dropout_xX",
-    image: "",
+    author: "Xx_bootcamp_dropout_xX",
+    img: "",
     title: "Full Stack Attack Competitive",
     description:
       "I've beaten the game with the dropout character, working to optimize the strategy for the incredibly complex and dynamic game. Want a group to talk about it with",
     category: "gaming"
   },
   {
-    title: "partially-obsessed",
-    image: "",
+    author: "partially-obsessed",
+    img: "",
     title: "ISO Partials Fan Group",
     description:
-      "I <3 Alex Eversbusch",
+      "Hardcore Alex Eversbusch Fanboy",
     category: "music"
   },
   {
-    title: "meeeeeooooowwwww",
-    image: "",
-    title: "Cats",
+    author: "meowTime87",
+    img: "",
+    title: "Crazy Cat Lady",
     description:
-      "Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats",
+      "DM me for invites to my cat's Quincinera",
     category: "pets"
   }
 ];
 
 const PackSeed = [
   {
-    title: "CaptnDestructo",
-    image: "http://placekitten.com/300/300",
+    image: "",
     title: "Forming Electro-Swing Band",
-    category: "music",
     description:
       "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
     category: "music",
@@ -114,107 +110,117 @@ const PackSeed = [
 
   },
   {
-    title: "Anonymous",
-    image: "http://placekitten.com/300/300",
-    title: "Looking for study group",
-    category: "music",
-    description:
-      "Do you need help learning web dedvelopment? Me too. That's why I created this howl. Please help me. Please.",
+    image: "",
+    title: "Bootcamo Study group",
+        description:
+      "Let's meet at Rays and study. Maybe cry a little too.",
     category: "web development",
     members: [],
     chat: ""
 
   },
   {
-    title: "FSAisGood62",
-    image: "http://placekitten.com/300/300",
+    image: "",
     title: "Full Stack Attack Fan Group",
-    category: "music",
     description:
-      "I love Full Stack Attack and am looking for people to play with and truly appreciate all the hilarious jokes hidden within.",
+      "Full Stack Attack enthusiaists looking for people to play with and truly appreciate all the hilarious jokes hidden within.",
     category: "gaming",
     members: [],
     chat: ""
 
   },
   {
-    title: "Xx_bootcamp_dropout_xX",
-    image: "http://placekitten.com/300/300",
-    title: "Full Stack Attack Competitive",
-    category: "music",
+    image: "",
+    title: "Full Stack Attack Competitive League",
     description:
-      "I've beaten the game with the dropout character, working to optimize the strategy for the incredibly complex and dynamic game. Want a group to talk about it with",
+      "Intense character optimization required and professional FSA players only. No noobs.",
     category: "gaming",
     members: [],
     chat: ""
 
   },
   {
-    title: "partially-obsessed",
-    image: "http://placekitten.com/300/300",
-    title: "ISO Partials Fan Group",
-    category: "music",
+    image: "",
+    title: "Partials Fan Group",
     description:
-      "I <3 Alex Eversbusch",
+      "Fans of Alex",
     category: "music",
     members: [],
     chat: ""
 
   },
   {
-    title: "meeeeeooooowwwww",
-    image: "http://placekitten.com/300/300",
-    title: "Cats",
-    category: "music",
+    image: "",
+    title: "Crazy Cat People",
     description:
-      "Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats Cats",
+      "Only cats. We will be making a detailed schedule to talk about and pet all the cats",
     category: "pets",
     members: [],
     chat: ""
-
+  },
+  {
+    image: "",
+    title: "Airbud Enthusiaists",
+    description:
+      "Detailed intensive dicussions about the psychology of human and animal relationships in the Airbud film saga",
+    category: "entertainment",
+    members: [],
+    chat: ""
+  },
+  {
+  image: "",
+  title: "Sports Team",
+  description:
+    "Lets play sports and score the points and get the goals. Go sports",
+  category: "sports",
+  members: [],
+  chat: ""
   }
 ];
 
 
 const AvatarSeed = [
   {
-    img: "http://placekitten.com/100/100"
+    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475536/av-lake_ptnjqv.jpg"
   },
   {
-    img: "http://placekitten.com/100/100"
+    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-moon_avb5hx.jpg"
   },
   
   {
-    img: "http://placekitten.com/100/100"
+    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-mountain_vdpyi0.jpg"
   },
   
   {
-    img: "http://placekitten.com/100/100"
+    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-sunset_jholjt.jpg"
   },
   
   {
-    img: "http://placekitten.com/100/100"
+    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-stars_gj7k0g.jpg"
   },
   
   {
-    img: "http://placekitten.com/100/100"
+    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-vines_hoe9ev.jpg"
   },
   
   {
-    img: "http://placekitten.com/100/100"
+    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-wolf_wfhfza.jpg"
   },
   
   {
-    img: "http://placekitten.com/100/100"
+    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-wolfscary_jtrxay.jpg"
   },
   
   {
-    img: "http://placekitten.com/100/100"
+    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561476121/av-wolfpup_y7mfyv.jpg"
   },
   
   {
-    img: "http://placekitten.com/100/100",
+    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561476121/av-wolfbot_kdi93k.jpg",
   },
+  {
+    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561476121/av-wolfwhite_g2azjf.jpg"
+  }
 ]
 
 db.Category.deleteMany({})
