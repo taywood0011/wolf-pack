@@ -6,7 +6,7 @@ import API from "../../utils/API";
 
 class AvatarPage extends Component {
   state = {
-    avatars: []
+    avatars: [],
   };
 
   componentDidMount() {
