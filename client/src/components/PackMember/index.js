@@ -6,9 +6,10 @@ import "./style.css";
 function PackMember (props) {
   return (
     <Col sm="12" md="4" lg="3">
-      <img className="pack-img" src={props.packMemberImg} alt={props.name} />
-      <p className="pack-title">
-        {props.name} || {props.location}
+      <img className="user-img" src={props.user.avatar} alt={props.name} />
+      <hr></hr>
+      <p className="member-info">
+        {props.user.name} && {props.user.location}
       </p>
     </Col>
   );
