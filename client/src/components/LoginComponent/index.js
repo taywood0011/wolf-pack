@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter} from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import Auth from "../../utils/Auth";
 import { Form, FormInput, FormGroup, Button } from "shards-react";
@@ -63,8 +63,8 @@ class LoginComponent extends Component {
           <Button className="login-btn" theme="dark" type="submit">
             Login
           </Button>
-          <Button className="create-btn" theme="dark" to="/profile">
-            <Link to="/profile">Create User</Link>
+          <Button className="create-btn" theme="dark" href="/profile">
+            Create User
           </Button>
         </Form>
       </div>

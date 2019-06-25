@@ -10,23 +10,10 @@ import LoginComponent from "./components/LoginComponent";
 import UserContext from "./context/UserContext";
 import HomePage from "./components/LoginComponent/Homepage";
 import PackPage from "./components/PackPage"
+import AvatarPage from "./components/AvatarPage"
 
 class App extends Component {
-  // ==================================================
-  // LOGIC FOR LOADING CATEGORY CARDS SHOULD GO HERE
-
-  // componentDidMount() {
-  //      this.loadCategories();
-  //  }
-  //  loadCategories = () => {
-  //     API.getCategories()
-  //     .then(res =>
-  //       this.setState({ category: res.data, image: "", icon: ""})
-  //     )
-  //     .catch(err => console.log(err));
-  //  }
-  // ==================================================
-
+  
   state = {
     user: null
   };
@@ -78,6 +65,7 @@ class App extends Component {
             <ProtectedRoute exact path="/" component={HomePage} />
             <Route exact path="/login" component={LoginComponent} />
             <Route exact path="/profile" component={InputInfo} />
+            <Route exact path="/avatarpage" component={AvatarPage} />
           </UserContext.Provider>
 
           <FooterComponent />

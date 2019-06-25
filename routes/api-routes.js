@@ -81,8 +81,18 @@ module.exports = function(app) {
     });
   });
 
+<<<<<<< HEAD
   app.get("/api/howls/author/:username", function(req, res) {
     db.Howl.find({author: req.params.username}).then(function(results) {
+=======
+    //======================================================================
+  //
+  // AVATAR ROUTES
+  //
+  //======================================================================
+  app.get("/api/avatars", function(req, res) {
+    db.Avatar.find().then(function(results) {
+>>>>>>> f4ae424b78d41df987a1a5d6ad94ba23cd8992e9
       res.json(results);
     });
   });
