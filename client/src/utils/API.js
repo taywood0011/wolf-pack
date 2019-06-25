@@ -22,7 +22,11 @@ export default {
   },
 
   postHowl: function (howl) {
-    return axios.post(`/api/howls`, howl)
+    return axios.post("/api/howl", howl)
+  },
+
+  postPack: function (pack) {
+    return axios.post("/api/pack", pack)
   },
 
   getPack: function(id){

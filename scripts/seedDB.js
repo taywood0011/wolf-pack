@@ -168,6 +168,15 @@ const PackSeed = [
     chat: ""
   },
   {
+    image: "",
+    title: "Dunkirk Enthusiaists",
+    description:
+      "Detailed intensive dicussions about the psychology of human and animal relationships in the Dunkirk film saga",
+    category: "entertainment",
+    members: [],
+    chat: ""
+  },
+  {
   image: "",
   title: "Sports Team",
   description:

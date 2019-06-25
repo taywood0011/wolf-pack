@@ -87,6 +87,14 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/howl", function (req, res) {
+    console.log("adding a howl", req.body);
+    db.Howl.create(req.body)
+        .then(function (dbHowl) {
+            res.json(dbHowl);
+        });
+    });
+
   //======================================================================
   //
   // PACK ROUTES
@@ -98,6 +106,14 @@ module.exports = function(app) {
       res.json(results);
     });
   });
+
+  app.post("/api/pack", function (req, res) {
+    console.log("adding a pack", req.body);
+    db.Pack.create(req.body)
+        .then(function (dbPack) {
+            res.json(dbPack);
+        });
+    });
 
   //======================================================================
   //
