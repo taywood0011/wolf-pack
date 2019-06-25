@@ -6,6 +6,14 @@ export default {
     
   },
 
+  showAvatars: function() {
+    return axios.get("/api/avatars");
+  },
+
+  setAvatar: function(id) {
+    console.log("Avatar Set! ID:", id)
+  },
+
   getHowls: function (category) {
     if (category !== "all") {
     return axios.get(`/api/howls/${category.toLowerCase()}`)

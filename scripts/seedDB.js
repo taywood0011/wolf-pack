@@ -99,6 +99,47 @@ const HowlSeed = [
   }
 ]
 
+const AvatarSeed = [
+  {
+    img: "http://placekitten.com/100/100"
+  },
+  {
+    img: "http://placekitten.com/100/100"
+  },
+  
+  {
+    img: "http://placekitten.com/100/100"
+  },
+  
+  {
+    img: "http://placekitten.com/100/100"
+  },
+  
+  {
+    img: "http://placekitten.com/100/100"
+  },
+  
+  {
+    img: "http://placekitten.com/100/100"
+  },
+  
+  {
+    img: "http://placekitten.com/100/100"
+  },
+  
+  {
+    img: "http://placekitten.com/100/100"
+  },
+  
+  {
+    img: "http://placekitten.com/100/100"
+  },
+  
+  {
+    img: "http://placekitten.com/100/100",
+  },
+]
+
 db.Category.deleteMany({})
   .then(() => db.Category.collection.insertMany(CategoriesSeed))
   .then(data => {
@@ -116,3 +157,13 @@ db.Howl.deleteMany({})
   .catch(err => {
     console.error(err);
   });
+
+  db.Avatar.deleteMany({})
+  .then(() => db.Avatar.collection.insertMany(AvatarSeed))
+  .then(data => {
+    console.log(data.result.n + " avatar documents inserted!");
+  })
+  .catch(err => {
+    console.error(err);
+  });
+

@@ -81,4 +81,15 @@ module.exports = function(app) {
     });
   });
 
+    //======================================================================
+  //
+  // AVATAR ROUTES
+  //
+  //======================================================================
+  app.get("/api/avatars", function(req, res) {
+    db.Avatar.find().then(function(results) {
+      res.json(results);
+    });
+  });
+
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "shards-react";
 import ItemCard from "../ItemCard";
-import PackPage from "../PackPage";
+// import PackPage from "../PackPage";
 import "./styles.css";
 import API from "../../utils/API"
 
