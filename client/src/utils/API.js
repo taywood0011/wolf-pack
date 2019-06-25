@@ -6,6 +6,10 @@ export default {
     
   },
 
+  getUser: function (username) {
+    return axios.get("/api/user/" + username)
+  },
+
   showAvatars: function() {
     return axios.get("/api/avatars");
   },
@@ -39,6 +43,6 @@ export default {
   },
 
   joinPack: function (id, user) {
-    return axios.post(`/api/packs/${id}`, user);
+    return axios.post(`/api/packs/${id}`, {_id: user});
   }
 };

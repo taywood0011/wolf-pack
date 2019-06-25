@@ -164,6 +164,9 @@ class Tundra extends React.Component {
 
       case "user":
         API.getUserHowls(localStorage.getItem("username"));
+
+      default:
+        console.log("oops")
     }
   }
 

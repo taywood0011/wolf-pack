@@ -51,6 +51,12 @@ module.exports = function(app) {
     }).then(dbUser => processUserDbResult(res, dbUser, password));
   });
 
+  app.get("/api/user/:username", function(req, res) {
+    db.User.findOne({username: req.params.username}).then(function(results) {
+      res.json(results);
+    });
+  });
+
   //======================================================================
   //
   // CATEGORY ROUTES
@@ -107,10 +113,11 @@ module.exports = function(app) {
   });
 
   app.post("/api/packs/:id", function(req, res) {
-    console.log("Request to join pack recieved")
-    db.Pack.findByIdAndUpdate(
-      req.params.id,
-      { $push: { members: req.body } },
+    const userid = req.body;
+    console.log("Request to join pack recieved", req.body)
+    db.Pack.findOneAndUpdate(
+      { _id: req.params.id },
+      { $push: { members: userid._id } },
       { new: true }).then(function(results) {
         console.log(results)
         res.json(results)
