@@ -44,11 +44,21 @@ class PackPage extends React.Component {
        });
    };
 
-   handleChatSubmit = ()=> {
-    this.setState({
-      chat: NewMessage
-    });
-  };
+  //  handle chatbox logic
+  //  handleChatSubmit = ()=> {
+  //   this.setState({
+  //     chat: "NewMessage"
+  //   });
+  // };
+
+
+  // add toggler to edit the description
+  // handleChatSubmit= ()=> {
+  //   this.setState({
+  //     description:
+  //   
+  //   });
+  // };
    
 
   componentDidMount() {
