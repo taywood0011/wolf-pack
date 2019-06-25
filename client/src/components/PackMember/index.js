@@ -6,10 +6,10 @@ import "./style.css";
 function PackMember (props) {
   return (
     <Col sm="12" md="4" lg="3">
-      <img className="user-img" src={props.user.avatar} alt={props.name} />
+      <img className="user-img" src={props.avatar} alt={props.name} />
       <hr></hr>
       <p className="member-info">
-        {props.user.name} && {props.user.location}
+        {props.name} && {props.location}
       </p>
     </Col>
   );

@@ -11,9 +11,9 @@ import {
     return (
         <Container>
         <Card style={{ maxWidth: "500x" }}>
-          <CardHeader>{props.pack.category}</CardHeader>
+          <CardHeader>{props.category}</CardHeader>
           <CardBody>
-            <p>{props.pack.description}</p>
+            <p>{props.description}</p>
           </CardBody>
         </Card>
       </Container>
