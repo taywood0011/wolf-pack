@@ -8,7 +8,7 @@ import {
 import PackMember from "../PackMember";
 import PackHeader from "../PackHeader";
 import API from "../../utils/API";
-import NewMessage from "../NewMessage";
+// import NewMessage from "../NewMessage";
 
 
 class PackPage extends React.Component {

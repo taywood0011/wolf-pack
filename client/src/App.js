@@ -10,7 +10,8 @@ import LoginComponent from "./components/LoginComponent";
 import UserContext from "./context/UserContext";
 import HomePage from "./components/LoginComponent/Homepage";
 import PackPage from "./components/PackPage";
-import AvatarPage from "./components/AvatarPage";
+import CreatePack from "./components/CreatePack";
+
 
 
 class App extends Component {
@@ -29,18 +30,11 @@ class App extends Component {
         <div>
           <UserContext.Provider value={{ setUser, user }}>
             <NavComponent />
-          </UserContext.Provider>
           <Route exact path="/packCategories" component={CategoryPage} />
           <Route exact path="/howlCategories" component={CategoryPage} />
 
-          <Route exact path="/newHowl" component={InputInfo} />
-          <Route exact path="/newPack" component={InputInfo} />
-          <Route
-            exact
-            path="/noplease"
-            render={() => <Tundra currentDisplay="home" />}
-          />
-          <UserContext.Provider value={{ setUser, user }}>
+          <Route path="/newHowl" component={CreatePack} />
+          <Route path="/newPack" component={CreatePack} />
             <Route
               exact
               path="/howls/:category"
@@ -54,6 +48,11 @@ class App extends Component {
             <Route
               exact
               path="/packs/:category"
+              render={props => <Tundra currentDisplay="packs" {...props} />}
+            />
+            <Route
+              exact
+              path="/packs/:newPack"
               render={props => <Tundra currentDisplay="packs" {...props} />}
             />
           </UserContext.Provider>

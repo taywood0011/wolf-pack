@@ -123,7 +123,7 @@ export default class NavComponent extends React.Component {
                 </DropdownItem>
                 <DropdownItem>
                   <Link
-                    to="/profile"
+                    to="/newPack"
                     className={
                       window.location.pathname === "/newPack"
                         ? "nav-link active"
@@ -160,7 +160,7 @@ export default class NavComponent extends React.Component {
                 </DropdownItem>
                 <DropdownItem>
                   <Link
-                    to="/profile"
+                    to="/newHowl"
                     className={
                       window.location.pathname === "/newHowl"
                         ? "nav-link active"
