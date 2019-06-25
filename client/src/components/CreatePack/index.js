@@ -21,10 +21,10 @@ class CreatePack extends Component {
       image: image
     });
     window.location.pathname === "/newPack/avatar"
-    ? this.props.history.push("/newPack")
-    : this.props.history.push("/newHowl");
+      ? this.props.history.push("/newPack")
+      : this.props.history.push("/newHowl");
   };
- 
+
   changeHandler = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -34,11 +34,10 @@ class CreatePack extends Component {
     e.preventDefault();
     const { title, image, category, description } = this.state;
     window.location.pathname === "/newPack"
-                    ? API.postPack(this.state)
-                    : API.postHowl(this.state);
-   
-      this.props.history.push("/packCategories");
-    
+      ? API.postPack(this.state)
+      : API.postHowl(this.state);
+
+    this.props.history.push("/packCategories");
   };
 
   render() {
