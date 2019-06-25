@@ -17,7 +17,7 @@ class InputInfo extends Component {
   };
 
   assignAvatar = image => {
-    console.log(image)
+    console.log(image);
     this.setState({
       userAvatar: image
     });
@@ -59,7 +59,11 @@ class InputInfo extends Component {
         <div className="img-container">
           <img
             className="edit-img"
-            src={!this.state.userAvatar ? "http://placekitten.com/300/300" : this.state.userAvatar}
+            src={
+              !this.state.userAvatar
+                ? "http://placekitten.com/300/300"
+                : this.state.userAvatar
+            }
             alt="choose avatar"
           />
           <div className="img-text-center">
@@ -84,7 +88,9 @@ class InputInfo extends Component {
               <FormInput
                 id="username"
                 name="username"
-                placeholder={!this.state.username ? "Username" : this.state.userAvatar}
+                placeholder={
+                  !this.state.username ? "Username" : this.state.userAvatar
+                }
                 type="text"
                 value={this.state.username}
                 onChange={this.changeHandler}
