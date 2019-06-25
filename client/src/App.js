@@ -9,10 +9,9 @@ import NavComponent from "./components/NavComponent";
 import LoginComponent from "./components/LoginComponent";
 import UserContext from "./context/UserContext";
 import HomePage from "./components/LoginComponent/Homepage";
-import PackPage from "./components/PackPage"
+import PackPage from "./components/PackPage";
 
 class App extends Component {
-  
   state = {
     user: null
   };
@@ -31,7 +30,7 @@ class App extends Component {
           </UserContext.Provider>
           <Route exact path="/packCategories" component={CategoryPage} />
           <Route exact path="/howlCategories" component={CategoryPage} />
-          
+
           <Route exact path="/newHowl" component={InputInfo} />
           <Route exact path="/newPack" component={InputInfo} />
           <Route
@@ -64,9 +63,7 @@ class App extends Component {
             <ProtectedRoute exact path="/" component={HomePage} />
             <Route exact path="/login" component={LoginComponent} />
             <Route path="/profile" component={InputInfo} />
-            {/* <Route exact path="/avatarpage" component={AvatarPage} /> */}
           </UserContext.Provider>
-
           <FooterComponent />
         </div>
       </Router>

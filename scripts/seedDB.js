@@ -181,45 +181,45 @@ const PackSeed = [
 
 const AvatarSeed = [
   {
-    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475536/av-lake_ptnjqv.jpg"
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475536/av-lake_ptnjqv.jpg"
   },
   {
-    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-moon_avb5hx.jpg"
-  },
-  
-  {
-    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-mountain_vdpyi0.jpg"
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-moon_avb5hx.jpg"
   },
   
   {
-    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-sunset_jholjt.jpg"
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-mountain_vdpyi0.jpg"
   },
   
   {
-    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-stars_gj7k0g.jpg"
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-sunset_jholjt.jpg"
   },
   
   {
-    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-vines_hoe9ev.jpg"
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-stars_gj7k0g.jpg"
   },
   
   {
-    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-wolf_wfhfza.jpg"
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-vines_hoe9ev.jpg"
   },
   
   {
-    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-wolfscary_jtrxay.jpg"
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-wolf_wfhfza.jpg"
   },
   
   {
-    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561476121/av-wolfpup_y7mfyv.jpg"
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561475555/av-wolfscary_jtrxay.jpg"
   },
   
   {
-    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561476121/av-wolfbot_kdi93k.jpg",
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561476121/av-wolfpup_y7mfyv.jpg"
+  },
+  
+  {
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561476121/av-wolfbot_kdi93k.jpg",
   },
   {
-    img: "https://res.cloudinary.com/dd0yofein/image/upload/v1561476121/av-wolfwhite_g2azjf.jpg"
+    image: "https://res.cloudinary.com/dd0yofein/image/upload/v1561476121/av-wolfwhite_g2azjf.jpg"
   }
 ]
 

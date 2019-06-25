@@ -29,7 +29,7 @@ class AvatarPage extends Component {
             <Avatar
               key={avatar._id}
               {...avatar}
-              handleClick={() => this.props.assignAvatar(avatar._id)}
+              handleClick={() => this.props.assignAvatar(avatar.image)}
             />
           ))}
         </Row>
