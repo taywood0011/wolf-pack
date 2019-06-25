@@ -7,11 +7,11 @@ import UserContext from "../../context/UserContext";
 class InputInfo extends Component {
   static contextType = UserContext;
   state = {
-      description: "",
-      location: "",
-      username: "",
-      password: "",
-    
+    description: "",
+    location: "",
+    username: "",
+    password: "",
+    userImg: ""
   };
 
   changeHandler = e => {
@@ -21,12 +21,18 @@ class InputInfo extends Component {
 
   createHandler = e => {
     e.preventDefault();
-    const { username, password, description, location } = this.state;
+    const { username, password, description, location} = this.state;
     if (username && password && description && location) {
-      Auth.createUser(username, password, location, description, (response) => {
-        this.context.setUser(response);
-        this.props.history.push("/");
-      });
+      Auth.createUser(
+        username,
+        password,
+        location,
+        description,
+        response => {
+          this.context.setUser(response);
+          this.props.history.push("/");
+        }
+      );
     }
   };
 
@@ -37,12 +43,18 @@ class InputInfo extends Component {
           <img
             className="edit-img"
             src="http://placekitten.com/300/300"
-            alt="add-img"
+            alt="choose avatar"
           />
           <div className="img-text-center">
             <span>
               {" "}
-              <Button outline squared size="md" theme="light">
+              <Button
+                outline
+                squared
+                size="md"
+                theme="light"
+                href="/avatarpage"
+              >
                 Choose An Image
               </Button>{" "}
             </span>
@@ -61,32 +73,31 @@ class InputInfo extends Component {
               />
             </FormGroup>
             <FormGroup>
-              <FormInput 
-              id="password"
-              name="password"
-              placeholder="Password"
-              type="password"
-              value={this.state.password}
-              onChange={this.changeHandler}
+              <FormInput
+                id="password"
+                name="password"
+                placeholder="Password"
+                type="password"
+                value={this.state.password}
+                onChange={this.changeHandler}
               />
-              <FormInput 
-              id="location"
-              name="location"
-              placeholder="Location"
-              type="text"
-              value={this.state.location}
-              onChange={this.changeHandler}
+              <FormInput
+                id="location"
+                name="location"
+                placeholder="Location"
+                type="text"
+                value={this.state.location}
+                onChange={this.changeHandler}
               />
             </FormGroup>
             <FormTextarea
-               id="description"
-               name="description"
-               placeholder="Description"
-               type="text"
-               value={this.state.description}
-               onChange={this.changeHandler}
-             
-             />
+              id="description"
+              name="description"
+              placeholder="Description"
+              type="text"
+              value={this.state.description}
+              onChange={this.changeHandler}
+            />
           </Form>
           <Button
             className="pill-button"
