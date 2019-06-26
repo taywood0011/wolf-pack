@@ -33,6 +33,7 @@ class Tundra extends React.Component {
             });
           });
         } catch (err) {
+          console.log(err);
           API.getUserHowls(this.props.match.params.author).then(res => {
             this.setState({
               data: res.data.map(item => {
@@ -47,121 +48,46 @@ class Tundra extends React.Component {
           });
         }
 
-        // dummy data instead
-        /*
-        this.setState({
-          data: [
-            {
-              id: 1,
-              img: "",
-              title: "Looking for group!!!1!",
-              body:
-                "ISO an airbud/electro-swing fan group. Both would be ideal, but either would work.",
-              category: this.props.match.params.category,
-              btnAction: "Invite",
-              type: "howl"
-            },
-            {
-              id: 2,
-              img: "",
-              title: "Looking for group!!!1!",
-              body:
-                "ISO an airbud/electro-swing fan group. Both would be ideal, but either would work.",
-              category: this.props.match.params.category,
-              btnAction: "Invite",
-              type: "howl"
-            }
-          ]
-        });
-        */
         return null;
 
       case "packs":
         // insert database call using category in state
 
-        API.getPacks(this.props.match.params.category).then(res => {
-          this.setState({
-            data: res.data.map(item => {
-              return { ...item, btnAction: "Join", clickFn: this.joinPack };
-            })
+        try {
+          console.log(this.props.match.params.category);
+          API.getPacks(this.props.match.params.category).then(res => {
+            this.setState({
+              data: res.data.map(item => {
+                return {
+                  ...item,
+                  btnAction: "Join",
+                  clickFn: this.joinPack,
+                  type: "pack"
+                };
+              })
+            });
           });
-        });
-
-        // dummy data instead
-        /*
-        this.setState({
-          data: [
-            {
-              id: 1,
-              img: "",
-              title: "Forming Electro-Swing Band",
-              body:
-                "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
-              category: this.props.match.params.category,
-              btnAction: "Join",
-              type: "pack"
-            },
-            {
-              id: 2,
-              img: "",
-              title: "Forming Electro-Swing Band",
-              body:
-                "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
-              category: this.props.match.params.category,
-              btnAction: "Join",
-              type: "pack"
-            },
-            {
-              id: 2,
-              img: "",
-              title: "Forming Electro-Swing Band",
-              body:
-                "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
-              category: this.props.match.params.category,
-              btnAction: "Join",
-              type: "pack"
-            },
-            {
-              id: 2,
-              img: "",
-              title: "Forming Electro-Swing Band",
-              body:
-                "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
-              category: this.props.match.params.category,
-              btnAction: "Join",
-              type: "pack"
-            },
-            {
-              id: 2,
-              img: "",
-              title: "Forming Electro-Swing Band",
-              body:
-                "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
-              category: this.props.match.params.category,
-              btnAction: "Join",
-              type: "pack"
-            },
-            {
-              id: 2,
-              img: "",
-              title: "Forming Electro-Swing Band",
-              body:
-                "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
-              category: this.props.match.params.category,
-              btnAction: "Join",
-              type: "pack"
-            }
-          ]
-        });
-        */
+        } catch (err) {
+          API.getUserPacks(this.props.match.params.member).then(res => {
+            console.log("Getting user packs for some frickin reason")
+            this.setState({
+              data: res.data.map(item => {
+                return {
+                  ...item,
+                  btnAction: "Invite",
+                  clickFn: this.inviteHowl,
+                  type: "pack"
+                };
+              })
+            });
+          });
+        }
 
         return null;
 
-      case "user":
-        API.getUserHowls(localStorage.getItem("username"));
-        break;
       default:
         console.log("oops");
+        return 0;
     }
   }
 
@@ -170,6 +96,7 @@ class Tundra extends React.Component {
   }
 
   render() {
+    console.log("Tundra state: ", this.state.data);
     return (
       <>
         {/*}<NewPackPage />*/}

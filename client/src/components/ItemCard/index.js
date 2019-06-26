@@ -55,9 +55,7 @@ export default class ItemCard extends React.Component {
   };
 
   render() {
-    let userID;
-    let click = this.clickFn;
-    let props = this.props._id
+
     return (
       <div>
         <Card style={{ maxWidth: "300px" }} onClick={this.toggle}>
@@ -104,12 +102,11 @@ export default class ItemCard extends React.Component {
                         outline
                         theme="info"
                         onClick={() => {
-                          API.getUser(context.user.username).then(response => {
-                            userID = response.data._id;
-                            console.log("userID:",userID)
-                            click(props, userID);
-                          });
-                        }}
+                          const user = localStorage.getItem("username");
+                          console.log("user: ", user)
+                          this.clickFn(this.props._id, user)
+                          }
+                        }
                       >
                         {this.props.btnAction || "Join"}
                       </Button>
