@@ -115,9 +115,11 @@ module.exports = function(app) {
   });
 
   app.get("/api/pack/:id", function(req, res) {
-    db.Pack.findById(req.params.id).then(function(results) {
-      res.json(results);
-    });
+    db.Pack.findById(req.params.id)
+      .populate("members")
+      .then(function(results) {
+        res.json(results);
+      });
   });
 
   app.post("/api/packs/:id", function(req, res) {
