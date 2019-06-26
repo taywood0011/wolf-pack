@@ -40,15 +40,23 @@ export default class ItemCard extends React.Component {
     } else if (this.state.type === "pack"){
       //request to join
 
-      API.joinPack(id, user)
-        .then(response => {
+      API.getUser(user).then(function(fullUser) {
+
+        console.log("user: ", fullUser.data);
+        return API.joinPack(id, fullUser.data._id)
+
+      }).then(response => {
+
           this.toggle();
           console.log("Response:", response);
-        })
-        .catch(err => {
+
+        }).catch(err => {
+
           console.log(err);
           this.toggle();
+
         });
+
     } else if (this.state.type === "myhowl") {
       API.deleteHowl(id).then(() => "Well, I never!")
     } else {
@@ -77,7 +85,6 @@ export default class ItemCard extends React.Component {
                     theme="info"
                     onClick={() => {
                       const user = localStorage.getItem("username");
-                      console.log("user: ", user);
                       this.clickFn(this.props._id, user);
                     }}
                   >

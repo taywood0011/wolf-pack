@@ -5,8 +5,8 @@ export default {
     return axios.get("/api/categories");
   },
 
-  getUser: function (username) {
-    return axios.get("/api/user/" + username)
+  getUser: function(username) {
+    return axios.get("/api/user/" + username);
   },
 
   showAvatars: function() {
@@ -21,27 +21,28 @@ export default {
     }
   },
 
-  getUserHowls: function (username) {
-    return axios.get(`/api/howls/author/${username}`)
+  getUserHowls: function(username) {
+    return axios.get(`/api/howls/author/${username}`);
   },
 
-  postHowl: function (howl) {
-    return axios.post("/api/howl", howl)
+  postHowl: function(data) {
+    const howl = { ...data };
+    return axios.post("/api/howl", howl);
   },
 
-  deleteHowl: function (howlId) {
-    return axios.delete("/api/howl/" + howlId)
+  deleteHowl: function(howlId) {
+    return axios.delete("/api/howl/" + howlId);
   },
 
-  postPack: function (pack) {
-    return axios.post("/api/pack", pack)
+  postPack: function(pack) {
+    return axios.post("/api/pack", pack);
   },
 
-  getPack: function(id){
+  getPack: function(id) {
     return axios.get("/api/pack/" + id);
   },
 
-  getPacks: function(category){
+  getPacks: function(category) {
     if (category !== "all") {
       return axios.get(`/api/packs/${category.toLowerCase()}`);
     } else {
@@ -49,11 +50,11 @@ export default {
     }
   },
 
-  getUserPacks: function (id) {
-    return axios.get(`/api/packs/user/${id}`)
+  getUserPacks: function(id) {
+    return axios.get(`/api/packs/user/${id}`);
   },
 
-  joinPack: function (id, user) {
-    return axios.post(`/api/packs/${id}`, {username: user});
+  joinPack: function(id, user) {
+    return axios.post(`/api/packs/${id}`, { _id: user });
   }
 };
