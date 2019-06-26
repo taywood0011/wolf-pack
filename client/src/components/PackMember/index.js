@@ -1,18 +1,22 @@
-import React from "react"
+import React from "react";
+import { Container, Row, Col, Card, CardBody, CardImg } from "shards-react";
 
-import { Col } from "shards-react";
-import "./style.css";
-
-function PackMember (props) {
+export default function   PackMember(props) {
   return (
-    <Col sm="12" md="4" lg="3">
-      <img className="user-img" src={props.avatar} alt={props.name} />
-      <hr></hr>
-      <p className="member-info">
-        {props.name} && {props.location}
-      </p>
-    </Col>
+    <Container>
+      <Row>
+        <Col sm="12" md="4" lg="3">
+          <Card>
+            <CardImg top src={props.userAvatar} alt={props.userName} />
+            <CardBody>
+              <p>{props.userName}</p>
+              <hr></hr>
+              <p>{props.location}</p>
+            </CardBody>
+          </Card>
+        </Col>
+        <Row></Row></Row>
+        </Container>
   );
 }
 
-export default PackMember;
