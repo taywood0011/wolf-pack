@@ -50,7 +50,7 @@ export default class ItemCard extends React.Component {
           this.toggle();
         });
     } else if (this.state.type === "myhowl") {
-      API.deleteHowl(id)
+      API.deleteHowl(id).then(() => "Well, I never!")
     } else {
       //show pack page
     }

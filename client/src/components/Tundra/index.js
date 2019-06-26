@@ -68,7 +68,7 @@ class Tundra extends React.Component {
               data: res.data.map(item => {
                 return {
                   ...item,
-                  btnAction: "Invite",
+                  btnAction: "Delete",
                   clickFn: this.deleteHowl,
                   type: "myhowl"
                 };
@@ -116,7 +116,7 @@ class Tundra extends React.Component {
               <div className="tundra-home">{/* Homepage */}</div>
             ) : (
               this.state.data.map(card => {
-                return <ItemCard key={card._id} {...card} />;
+                return <ItemCard key={card._id} {...card} forceRender={this.getCardData}/>;
               })
             )}
           </div>
