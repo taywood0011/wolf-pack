@@ -14,7 +14,7 @@ import {
 } from "shards-react";
 import Auth from "../../utils/Auth";
 import UserContext from "../../context/UserContext";
-import API from "../../utils/API";
+
 
 export default class NavComponent extends React.Component {
   static contextType = UserContext;
