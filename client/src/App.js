@@ -41,7 +41,7 @@ class App extends Component {
             <Route
               exact
               path="/howls/authors/:author"
-              render={props => <Tundra currentDisplay="howls" {...props} />}
+              render={props => <Tundra currentDisplay="userhowls" {...props} />}
             />
             <Route
               exact
@@ -51,7 +51,7 @@ class App extends Component {
             <Route
               exact
               path="/packs/user/:member"
-              render={props => <Tundra currentDisplay="packs" {...props} />}
+              render={props => <Tundra currentDisplay="userpacks" {...props} />}
             />
           </UserContext.Provider>
           <Route

@@ -101,6 +101,12 @@ module.exports = function(app) {
     });
   });
 
+  app.delete("/api/howl/:id", function(req, res) {
+    db.Howl.delete({_id: req.params.id}).then(function (dbHowl) {
+      res.json(dbHowl);
+    });
+  });
+
   //======================================================================
   //
   // PACK ROUTES

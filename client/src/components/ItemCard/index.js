@@ -37,7 +37,7 @@ export default class ItemCard extends React.Component {
     if (this.state.type === "howl") {
       //invite to group
       this.toggle();
-    } else {
+    } else if (this.state.type === "pack"){
       //request to join
 
       API.joinPack(id, user)
@@ -49,13 +49,14 @@ export default class ItemCard extends React.Component {
           console.log(err);
           this.toggle();
         });
-
-
+    } else if (this.state.type === "myhowl") {
+      API.deleteHowl(id)
+    } else {
+      //show pack page
     }
   };
 
   render() {
-
     return (
       <div>
         <Card style={{ maxWidth: "300px" }} onClick={this.toggle}>
@@ -66,9 +67,28 @@ export default class ItemCard extends React.Component {
             </CardTitle>
             <h4>{this.props.category}</h4>
             <h6>{this.props.description || "lorem ipsim dolor imet"}</h6>
+            <UserContext.Consumer>
+              {context => {
+                return (
+                  <Button
+                    className="modal-button"
+                    block
+                    squared
+                    theme="info"
+                    onClick={() => {
+                      const user = localStorage.getItem("username");
+                      console.log("user: ", user);
+                      this.clickFn(this.props._id, user);
+                    }}
+                  >
+                    {this.props.btnAction || "Join"}
+                  </Button>
+                );
+              }}
+            </UserContext.Consumer>
           </CardBody>
         </Card>
-
+        {/*}
         <Modal open={this.state.open} toggle={this.toggle}>
           <ModalHeader>
             {this.props.title} by {this.props.author}
@@ -93,7 +113,6 @@ export default class ItemCard extends React.Component {
               <Col sm="6">
                 <UserContext.Consumer>
                   {context => {
-
                     return (
                       <Button
                         className="modal-button"
@@ -103,10 +122,9 @@ export default class ItemCard extends React.Component {
                         theme="info"
                         onClick={() => {
                           const user = localStorage.getItem("username");
-                          console.log("user: ", user)
-                          this.clickFn(this.props._id, user)
-                          }
-                        }
+                          console.log("user: ", user);
+                          this.clickFn(this.props._id, user);
+                        }}
                       >
                         {this.props.btnAction || "Join"}
                       </Button>
@@ -117,6 +135,7 @@ export default class ItemCard extends React.Component {
             </Row>
           </Container>
         </Modal>
+        */}
       </div>
     );
   }

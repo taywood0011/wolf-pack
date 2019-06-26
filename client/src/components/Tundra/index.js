@@ -33,19 +33,7 @@ class Tundra extends React.Component {
             });
           });
         } catch (err) {
-          console.log(err);
-          API.getUserHowls(this.props.match.params.author).then(res => {
-            this.setState({
-              data: res.data.map(item => {
-                return {
-                  ...item,
-                  btnAction: "Invite",
-                  clickFn: this.inviteHowl,
-                  type: "howl"
-                };
-              })
-            });
-          });
+          console.log(err)
         }
 
         return null;
@@ -68,6 +56,30 @@ class Tundra extends React.Component {
             });
           });
         } catch (err) {
+          console.log(err)
+        }
+
+        return null;
+
+      case "userhowls":
+
+          API.getUserHowls(this.props.match.params.author).then(res => {
+            this.setState({
+              data: res.data.map(item => {
+                return {
+                  ...item,
+                  btnAction: "Invite",
+                  clickFn: this.deleteHowl,
+                  type: "myhowl"
+                };
+              })
+            });
+          });
+
+          return null;
+
+      case "userpacks":
+
           API.getUserPacks(this.props.match.params.member).then(res => {
             console.log("Getting user packs for some frickin reason", this.props.match.params.member)
             this.setState({
@@ -75,19 +87,16 @@ class Tundra extends React.Component {
                 return {
                   ...item,
                   btnAction: "Invite",
-                  clickFn: this.inviteHowl,
-                  type: "pack"
+                  clickFn: this.showPack,
+                  type: "mypack"
                 };
               })
             });
           });
-        }
-
-        return null;
 
       default:
         console.log("oops");
-        return 0;
+        return null;
     }
   }
 
