@@ -38,7 +38,7 @@ module.exports = function(app) {
   //======================================================================
 
   app.post("/api/createuser", function(req, res) {
-    console.log("create user api route!!!!")
+    console.log("create user api route!!!!");
     const { password } = req.body;
     db.User.create(req.body).then(dbUser =>
       processUserDbResult(res, dbUser, password)
@@ -53,7 +53,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/user/:username", function(req, res) {
-    db.User.findOne({username: req.params.username}).then(function(results) {
+    db.User.findOne({ username: req.params.username }).then(function(results) {
       res.json(results);
     });
   });
@@ -94,13 +94,12 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/howl", function (req, res) {
+  app.post("/api/howl", function(req, res) {
     console.log("adding a howl", req.body);
-    db.Howl.create(req.body)
-        .then(function (dbHowl) {
-            res.json(dbHowl);
-        });
+    db.Howl.create(req.body).then(function(dbHowl) {
+      res.json(dbHowl);
     });
+  });
 
   //======================================================================
   //
@@ -110,6 +109,7 @@ module.exports = function(app) {
 
   app.get("/api/packs/:category", function(req, res) {
     db.Pack.find({ category: req.params.category }).then(function(results) {
+      console.log("category search")
       res.json(results);
     });
   });
@@ -122,24 +122,39 @@ module.exports = function(app) {
 
   app.post("/api/packs/:id", function(req, res) {
     const userid = req.body;
-    console.log("Request to join pack recieved", req.body)
+    console.log("Request to join pack recieved", req.body);
     db.Pack.findOneAndUpdate(
       { _id: req.params.id },
-      { $push: { members: userid._id } },
-      { new: true }).then(function(results) {
-        console.log(results)
-        res.json(results)
-      })
+      { $push: { members: userid.username } },
+      { new: true }
+    ).then(function(results) {
+      console.log(results);
+      res.json(results);
+    });
   });
 
-  app.post("/api/pack", function (req, res) {
+  app.post("/api/pack", function(req, res) {
     console.log("adding a pack", req.body);
-    db.Pack.create(req.body)
-        .then(function (dbPack) {
-            res.json(dbPack);
-        });
+    db.Pack.create(req.body).then(function(dbPack) {
+      res.json(dbPack);
     });
+  });
 
+  app.get("/api/packs", function(req, res) {
+    db.Pack.find().then(function(results) {
+      res.json(results);
+    });
+  });
+
+  app.get("/api/packs/user/:id", function(req, res) {
+    db.Pack.find({}).then(function(results) {
+      const data = results.filter(pack => {
+        return pack.members.includes(req.params.username);
+      });
+
+      res.json(data)
+    });
+  });
 
   //======================================================================
   //

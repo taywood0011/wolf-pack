@@ -12,8 +12,6 @@ import HomePage from "./components/LoginComponent/Homepage";
 import PackPage from "./components/PackPage";
 import CreatePack from "./components/CreatePack";
 
-
-
 class App extends Component {
   state = {
     user: null
@@ -30,11 +28,11 @@ class App extends Component {
         <div>
           <UserContext.Provider value={{ setUser, user }}>
             <NavComponent />
-          <Route exact path="/packCategories" component={CategoryPage} />
-          <Route exact path="/howlCategories" component={CategoryPage} />
+            <Route exact path="/packCategories" component={CategoryPage} />
+            <Route exact path="/howlCategories" component={CategoryPage} />
 
-          <Route path="/newHowl" component={CreatePack} />
-          <Route path="/newPack" component={CreatePack} />
+            <Route path="/newHowl" component={CreatePack} />
+            <Route path="/newPack" component={CreatePack} />
             <Route
               exact
               path="/howls/:category"
@@ -52,7 +50,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/packs/:newPack"
+              path="/packs/user/:member"
               render={props => <Tundra currentDisplay="packs" {...props} />}
             />
           </UserContext.Provider>

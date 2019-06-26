@@ -14,6 +14,7 @@ import {
 } from "shards-react";
 import Auth from "../../utils/Auth";
 import UserContext from "../../context/UserContext";
+import API from "../../utils/API";
 
 export default class NavComponent extends React.Component {
   static contextType = UserContext;
@@ -106,7 +107,13 @@ export default class NavComponent extends React.Component {
                 Packs
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem>My Packs</DropdownItem>
+                <DropdownItem>
+                  <Link
+                    to={"/packs/user/" + localStorage.getItem("username")}
+                  >
+                    My Packs
+                  </Link>
+                </DropdownItem>
                 <DropdownItem>
                   <span>
                     <Link
@@ -142,7 +149,9 @@ export default class NavComponent extends React.Component {
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem>
-                  <Link to={"/howls/authors/" + localStorage.getItem("username")}>
+                  <Link
+                    to={"/howls/authors/" + localStorage.getItem("username")}
+                  >
                     My Howls
                   </Link>
                 </DropdownItem>
