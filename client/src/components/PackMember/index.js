@@ -9,7 +9,7 @@ export default function   PackMember(props) {
           <Card>
             <CardImg top src={props.userAvatar} alt={props.userName} />
             <CardBody>
-              <p>{props.userName}</p>
+              <p>{props.username}</p>
               <hr></hr>
               <p>{props.location}</p>
             </CardBody>
