@@ -29,6 +29,10 @@ export default {
     return axios.post("/api/howl", howl)
   },
 
+  deleteHowl: function (howlId) {
+    return axios.delete("/api/howl/" + howlId)
+  },
+
   postPack: function (pack) {
     return axios.post("/api/pack", pack)
   },
