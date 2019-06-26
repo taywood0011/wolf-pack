@@ -1,4 +1,4 @@
-const User = require("../models/User");
+
 const db = require("../models");
 const jwt = require("jsonwebtoken");
 const authWare = require("../middleware/authware");
@@ -58,6 +58,11 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/checkToken", authWare, function(req, res) {
+		const user = req.user;
+		res.json({valid: true});
+	});
+
   //======================================================================
   //
   // CATEGORY ROUTES
@@ -102,7 +107,7 @@ module.exports = function(app) {
   });
 
   app.delete("/api/howl/:id", function(req, res) {
-    db.Howl.delete({_id: req.params.id}).then(function (dbHowl) {
+    db.Howl.remove({_id: req.params.id}).then(function (dbHowl) {
       res.json(dbHowl);
     });
   });
@@ -133,7 +138,7 @@ module.exports = function(app) {
     console.log("Request to join pack recieved", req.body);
     db.Pack.findOneAndUpdate(
       { _id: req.params.id },
-      { $push: { members: userid.username } },
+      { $push: { members: userid._id } },
       { new: true }
     ).then(function(results) {
       console.log(results);
@@ -154,11 +159,11 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/packs/user/:username", function(req, res) {
+  app.get("/api/packs/user/:id", function(req, res) {
     db.Pack.find({}).then(function(results) {
       const data = results.filter(pack => {
-        console.log("Username:", req.params.username)
-        return pack.members.includes(req.params.username);
+        console.log("id:", req.params.id)
+        return pack.members.includes(req.params.id);
       });
       console.log("Data:", data)
       res.json(data)

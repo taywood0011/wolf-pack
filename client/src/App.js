@@ -11,6 +11,7 @@ import UserContext from "./context/UserContext";
 import HomePage from "./components/LoginComponent/Homepage";
 import PackPage from "./components/PackPage";
 import CreatePack from "./components/CreatePack";
+import Auth from "./utils/Auth"
 
 class App extends Component {
   state = {
@@ -20,7 +21,31 @@ class App extends Component {
   setUser = user => {
     this.setState({ user });
   };
+
+  refreshLogIn() {
+    const local = {
+      username: localStorage.getItem("username"),
+      token: localStorage.getItem("token")
+    };
+    console.log("User in storage:", local);
+    if (!Auth.isLoggedIn) {
+      this.setUser(local);
+    }
+  }
+
+  componentDidMount() {
+    const local = {
+      username: localStorage.getItem("username"),
+      token: localStorage.getItem("token")
+    };
+    console.log("User in storage:", local);
+    if (local.username.length) {
+      this.setUser(local);
+    }
+  }
+
   render() {
+    this.refreshLogIn()
     const { user } = this.state;
     const setUser = this.setUser;
     return (

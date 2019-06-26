@@ -12,7 +12,9 @@ class CreatePack extends Component {
     title: "",
     image: "",
     category: "",
-    description: ""
+    description: "",
+    author: localStorage.getItem("username"),
+
   };
 
   assignAvatar = image => {
