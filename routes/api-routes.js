@@ -146,12 +146,13 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/packs/user/:id", function(req, res) {
+  app.get("/api/packs/user/:username", function(req, res) {
     db.Pack.find({}).then(function(results) {
       const data = results.filter(pack => {
+        console.log("Username:", req.params.username)
         return pack.members.includes(req.params.username);
       });
-
+      console.log("Data:", data)
       res.json(data)
     });
   });

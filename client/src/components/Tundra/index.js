@@ -69,7 +69,7 @@ class Tundra extends React.Component {
           });
         } catch (err) {
           API.getUserPacks(this.props.match.params.member).then(res => {
-            console.log("Getting user packs for some frickin reason")
+            console.log("Getting user packs for some frickin reason", this.props.match.params.member)
             this.setState({
               data: res.data.map(item => {
                 return {
