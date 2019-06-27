@@ -55,6 +55,7 @@ export default class NavComponent extends React.Component {
   }
 
   render() {
+    console.log('navbar', this.props);
     return this.props.user ? this.renderLoggedIn() : this.renderNotLoggedIn();
   }
 
@@ -202,6 +203,10 @@ export default class NavComponent extends React.Component {
 
   handleLogOut = e => {
     console.log("handleLogOut");
-    Auth.logOut();
+    Auth.logOut(() => {
+      this.props.setUser(null);
+    });
   };
+
+
 }
