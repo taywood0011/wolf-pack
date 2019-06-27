@@ -46,7 +46,7 @@ export default class ItemCard extends React.Component {
 
           this.toggle();
           console.log("Response:", response);
-
+          alert(`${user} joined ${response.data.title}`)
         }).catch(err => {
 
           console.log(err);
