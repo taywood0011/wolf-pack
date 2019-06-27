@@ -92,6 +92,7 @@ class App extends Component {
             )}
           />
           <Route
+            exact
             path="/packs/:category"
             render={props => (
               <Tundra currentDisplay="packs" {...props} user={user} />
