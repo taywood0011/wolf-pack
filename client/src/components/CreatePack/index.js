@@ -83,7 +83,6 @@ class PackInfo extends Component {
   render() {
     return (
       <>
-        <h1>Create A New {this.props.label}</h1>
         <div className="img-container">
           <img
             className="edit-img"
@@ -91,7 +90,7 @@ class PackInfo extends Component {
             alt="choose avatar"
             onClick={this.avatarHandler}
           />
-          <p>Choose Avatar</p>
+          <p className="chooseAvatar">{"Choose " + this.props.label + " Avatar"}</p>
         </div>
         <div className="form-container">
           <Form>
@@ -99,7 +98,7 @@ class PackInfo extends Component {
               <FormInput
                 id="title"
                 name="title"
-                placeholder="Title"
+                placeholder={this.props.label + " Title"}
                 type="text"
                 value={this.props.title}
                 onChange={this.changeHandler}
@@ -109,16 +108,16 @@ class PackInfo extends Component {
               <FormInput
                 id="category"
                 name="category"
-                placeholder="Category"
+                placeholder={this.props.label + " Category"}
                 type="text"
-                value={this.props.category}
+                value={this.props.category.toLowerCase()}
                 onChange={this.changeHandler}
               />
             </FormGroup>
             <FormTextarea
               id="description"
               name="description"
-              placeholder="Description"
+              placeholder={this.props.label + " Description"}
               type="text"
               value={this.props.description}
               onChange={this.changeHandler}
