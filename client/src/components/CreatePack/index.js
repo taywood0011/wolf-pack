@@ -29,7 +29,8 @@ class CreatePack extends Component {
   create = () => {
     const copy = {...this.state};
     this.props.postApi(copy)
-    this.props.history.push(this.props.categoryList);
+    this.props.history.push(this.props.categoryList)
+    alert(`${this.state.currentUser.username} Created A New ${this.props.label} Called ${this.state.title}`)
   };
 
   showAvatarList = () => {

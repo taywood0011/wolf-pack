@@ -9,6 +9,7 @@ class InviteGroupPage extends Component {
  state = {
    howlAuthor: null,
    userGroups: [],
+   howlUserName: null
  };
 
  assignUserGroup = e => {
@@ -18,7 +19,7 @@ class InviteGroupPage extends Component {
        console.log("SUCCESS (maybe): ", newPack)
 
    })
-   alert(`You Invited ${this.state.howlAuthor} to a group`)
+   alert(`You Invited ${this.state.howlUserName} to a group`)
  };
 
  componentDidMount() {
@@ -34,7 +35,8 @@ class InviteGroupPage extends Component {
    }).then(user => {
        console.log("User: ", user)
         this.setState({
-            howlAuthor: user.data._id
+            howlAuthor: user.data._id,
+            howlUserName: user.data.username
         })
    }).catch(err => console.log(err))
 
