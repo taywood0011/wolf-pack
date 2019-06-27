@@ -52,8 +52,8 @@ export default class ItemCard extends React.Component {
 
     } else if (this.state.type === "myhowl") {
       API.deleteHowl(id).then(() => "Well, I never!")
-    } else {
-      //show pack page
+    } else if (this.state.type === "mypack"){ 
+      this.props.history.push(`/pack/${this.props._id}`)
     }
   };
 
