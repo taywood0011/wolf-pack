@@ -1,7 +1,7 @@
 import React from "react";
 import PackChat from "../PackChat"
 import PackDesc from "../PackDesc"
-import { Container } from "shards-react";
+import { Container, Modal, ModalBody, ModalHeader } from "shards-react";
 import {
   Row,
 } from "shards-react";
@@ -16,13 +16,26 @@ class PackPage extends React.Component {
     super(props);
 
     this.state = {
+      openEdit: false,
+      openProfile: false,
       title: "",
       image: "",
       catagory: "",
       description: "",
       members: [],
-      chat: ""
+      chat: []
     };
+  }
+
+  toggleEdit = () => {
+    this.setState({
+      openEdit: !(this.state.openEdit)
+    })
+  }
+  toggleProfile = () => {
+    this.setState({
+      openProfile: !(this.state.openProfile)
+    })
   }
 
   loadPack = id => {
@@ -44,21 +57,24 @@ class PackPage extends React.Component {
        });
    };
 
-  //  handle chatbox logic
-  //  handleChatSubmit = ()=> {
-  //   this.setState({
-  //     chat: "NewMessage"
-  //   });
-  // };
+   clickHandler = e => {
+    console.log(`${e.target.attributes.job.value} was clicked`)
+    if(e.target.attributes.job.value === "edit"){
+
+      this.toggle();
+    }
+    else if (e.target.attributes.job.value === "view") {
+      // view pack member
+    }
+    else if (e.target.attributes.job.value === "submit"){
+      // submit message to chat
+    }
+   }
+
+   ///edit modal needs button to push new text to pack description.
 
 
-  // add toggler to edit the description
-  // handleChatSubmit= ()=> {
-  //   this.setState({
-  //     description:
-  //   
-  //   });
-  // };
+  
    
 
   componentDidMount() {
@@ -71,17 +87,27 @@ class PackPage extends React.Component {
         {/* pack header */}
         <PackHeader image={this.state.image} title={this.state.title} />
         {/* pack description card */}
-        <PackDesc category={this.state.category} description={this.state.description} />
+        <PackDesc category={this.state.category} description={this.state.description} clickHandler={this.clickHandler}/>
         {/* pack members */}
         <Container>
           <Row>
             {this.state.members.map(packMember => (
-              <PackMember key={packMember._id} {...packMember} />
+              <PackMember key={packMember._id} {...packMember} clickHandler={this.clickHandler} />
             ))}
           </Row>
         </Container>
         {/* pack chat */}
-        <PackChat newMessage={this.state.newMessage} />
+        <PackChat newMessage={this.state.newMessage} clickHandler={this.clickHandler} chat={this.state.chat}/>
+
+        <Modal open={this.state.openEdit} toggle={this.toggleEdit}>
+          <ModalHeader>Header</ModalHeader>
+          <ModalBody> Edit Description</ModalBody>
+        </Modal>
+
+        <Modal open={this.state.openProfile} toggle={this.toggleProfile}>
+          <ModalHeader>Header</ModalHeader>
+          <ModalBody> Edit Description</ModalBody>
+        </Modal>
       </>
     );
   }
