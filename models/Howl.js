@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 
 const HowlSchema = new mongoose.Schema({
+    title: {
+        type: String
+    },
     author: {
         type: String
     },
     authorID: {
-        //type: 
+        type: mongoose.Schema.Types.ObjectId
     },
     category: {
         type: String
@@ -13,7 +16,7 @@ const HowlSchema = new mongoose.Schema({
     description: {
         type: String
     },
-    img: {
+    image: {
         type: String
     }
 });

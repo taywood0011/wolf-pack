@@ -27,7 +27,8 @@ function processUserDbResult(res, dbUser, password) {
 
     res.json({
       username: dbUser.username,
-      token
+      token,
+      _id: dbUser._id
     });
   } else {
     res.status(401).json({
@@ -137,6 +138,12 @@ module.exports = function(app) {
 
   app.delete("/api/howl/:id", function(req, res) {
     db.Howl.remove({_id: req.params.id}).then(function (dbHowl) {
+      res.json(dbHowl);
+    });
+  });
+
+  app.get("/api/howl/:id", function(req, res) {
+    db.Howl.findOne({_id: req.params.id}).then(function (dbHowl) {
       res.json(dbHowl);
     });
   });

@@ -7,7 +7,7 @@ export default function   PackMember(props) {
       <Row>
         <Col sm="12" md="4" lg="3">
           <Card>
-            <CardImg top src={props.userAvatar} alt={props.userName} />
+            <CardImg top src={props.userAvatar} alt={props.userName} onClick={props.clickHandler} job="view"/>
             <CardBody>
               <p>{props.username}</p>
               <hr></hr>

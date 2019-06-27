@@ -9,7 +9,8 @@ class CreatePack extends Component {
     image: "",
     category: "",
     description: "",
-    pickingAvatar: false
+    pickingAvatar: false,
+    currentUser: this.props.user
   };
 
   assignAvatar = image => {
@@ -89,6 +90,7 @@ class PackInfo extends Component {
             alt="choose avatar"
             onClick={this.avatarHandler}
           />
+          <p>Choose Avatar</p>
         </div>
         <div className="form-container">
           <Form>
@@ -123,7 +125,7 @@ class PackInfo extends Component {
           </Form>
           <Button
             className="pill-button"
-            theme="info"
+            theme="dark"
             onClick={this.createHandler}
           >
             Submit

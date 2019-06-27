@@ -7,7 +7,7 @@ const PackSchema = new Schema({
   category: {type: String, required: true},
   description: {type: String, required: true},
   members: [ { type: Schema.Types.ObjectId, ref: "User" } ],
-  chat: {type: String}
+  chat: {type: Array}
 
   
 });
