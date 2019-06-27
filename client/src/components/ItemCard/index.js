@@ -26,9 +26,13 @@ export default class ItemCard extends React.Component {
   }
 
   clickFn = (id, user) => {
+
+
     if (this.state.type === "howl") {
-      //invite to group
+
+      this.props.history.push(`/howl/${this.props._id}/invite`)
       this.toggle();
+
     } else if (this.state.type === "pack"){
       
       //request to join
@@ -51,9 +55,13 @@ export default class ItemCard extends React.Component {
         });
 
     } else if (this.state.type === "myhowl") {
+  
       API.deleteHowl(id).then(() => "Well, I never!")
+
     } else if (this.state.type === "mypack"){ 
+
       this.props.history.push(`/pack/${this.props._id}`)
+      
     }
   };
 

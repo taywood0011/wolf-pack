@@ -9,7 +9,8 @@ class CreatePack extends Component {
     image: "",
     category: "",
     description: "",
-    pickingAvatar: false
+    pickingAvatar: false,
+    currentUser: this.props.user
   };
 
   assignAvatar = image => {

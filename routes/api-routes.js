@@ -141,6 +141,12 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/howl/:id", function(req, res) {
+    db.Howl.findOne({_id: req.params.id}).then(function (dbHowl) {
+      res.json(dbHowl);
+    });
+  });
+
   //======================================================================
   //
   // PACK ROUTES

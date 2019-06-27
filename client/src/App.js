@@ -9,6 +9,7 @@ import LoginComponent from "./components/LoginComponent";
 import HomePage from "./components/LoginComponent/Homepage";
 import PackPage from "./components/PackPage";
 import CreatePack from "./components/CreatePack";
+import InviteGroupPage from "./components/InviteGroupPage"
 import Auth from "./utils/Auth";
 import API from "./utils/API";
 
@@ -91,6 +92,7 @@ class App extends Component {
             )}
           />
           <Route
+            exact
             path="/packs/:category"
             render={props => (
               <Tundra currentDisplay="packs" {...props} user={user} />
@@ -108,6 +110,13 @@ class App extends Component {
               <PackPage currentDisplay="packPage" {...props} user={user} />
             )}
           />
+          <Route
+           // exact
+           path="/howl/:id/invite"
+           render={props => (
+             <InviteGroupPage {...props} user={user} />
+           )}
+         />
 
           <Route
             exact

@@ -21,12 +21,23 @@ export default {
     }
   },
 
+  getHowl: function (id) {
+    return axios.get(`/api/howl/${id}`)
+  },
+
   getUserHowls: function(username) {
     return axios.get(`/api/howls/author/${username}`);
   },
 
   postHowl: function(data) {
-    const howl = { ...data };
+    const howl = {
+      title: data.title,
+      image: data.image,
+      category: data.category,
+      description: data.description,
+      author: data.currentUser.username,
+      authorID: data.currentUser._id
+    };
     return axios.post("/api/howl", howl);
   },
 
@@ -35,7 +46,14 @@ export default {
   },
 
   postPack: function(pack) {
-    return axios.post("/api/pack", pack);
+    const formattedPack = {
+      title: pack.title,
+      image: pack.image,
+      category: pack.category,
+      description: pack.description,
+      members: [ pack.currentUser._id ]
+    }
+    return axios.post("/api/pack", formattedPack);
   },
 
   getPack: function(id) {
