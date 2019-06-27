@@ -50,7 +50,7 @@ const CategoriesSeed = [
 const HowlSeed = [
   {
     author: "CaptnDestructo",
-    img: "",
+    image: "",
     title: "Forming Electro-Swing Band",
     description:
       "We need a good keyboardist and of course we are always looking for other bands to practice, preform, or even just hang out with. Don't be shy!",
@@ -58,7 +58,7 @@ const HowlSeed = [
   },
   {
     author: "Anonymous",
-    img: "",
+    image: "",
     title: "Looking for study group",
     description:
       "Do you need help learning web dedvelopment? Me too. That's why I created this howl. Please help me. Please.",
@@ -66,7 +66,7 @@ const HowlSeed = [
   },
   {
     author: "FSAisGood62",
-    img: "",
+    image: "",
     title: "Full Stack Attack Fan Group",
     description:
       "I love Full Stack Attack and am looking for people to play with and truly appreciate all the hilarious jokes hidden within.",
@@ -74,7 +74,7 @@ const HowlSeed = [
   },
   {
     author: "Xx_bootcamp_dropout_xX",
-    img: "",
+    image: "",
     title: "Full Stack Attack Competitive",
     description:
       "I've beaten the game with the dropout character, working to optimize the strategy for the incredibly complex and dynamic game. Want a group to talk about it with",
@@ -82,7 +82,7 @@ const HowlSeed = [
   },
   {
     author: "partially-obsessed",
-    img: "",
+    image: "",
     title: "ISO Partials Fan Group",
     description:
       "Hardcore Alex Eversbusch Fanboy",
@@ -90,7 +90,7 @@ const HowlSeed = [
   },
   {
     author: "meowTime87",
-    img: "",
+    image: "",
     title: "Crazy Cat Lady",
     description:
       "DM me for invites to my cat's Quincinera",

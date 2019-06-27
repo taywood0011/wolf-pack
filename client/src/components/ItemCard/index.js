@@ -26,9 +26,13 @@ export default class ItemCard extends React.Component {
   }
 
   clickFn = (id, user) => {
+
+
     if (this.state.type === "howl") {
-      //invite to group
+
+      this.props.history.push(`/howl/${this.props._id}/invite`)
       this.toggle();
+
     } else if (this.state.type === "pack"){
       
       //request to join
@@ -51,9 +55,13 @@ export default class ItemCard extends React.Component {
         });
 
     } else if (this.state.type === "myhowl") {
+  
       API.deleteHowl(id).then(() => "Well, I never!")
+
     } else {
+
       //show pack page
+
     }
   };
 
@@ -61,7 +69,7 @@ export default class ItemCard extends React.Component {
     return (
       <div>
         <Card style={{ maxWidth: "300px" }} onClick={this.toggle}>
-          <CardImg src={this.props.img || "https://place-hold.it/300x200"} />
+          <CardImg src={this.props.img || "https://res.cloudinary.com/dd0yofein/image/upload/v1561475536/av-lake_ptnjqv.jpg"} />
           <CardBody>
             <CardTitle>
               <p>{this.props.title || "Title"}</p>
