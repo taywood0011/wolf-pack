@@ -15,7 +15,7 @@ import {
           <CardHeader>{props.category}</CardHeader>
           <CardBody>
             <p>{props.description}</p>
-            <Button className="pill-button" theme="info" size="sm" style={{ float: "right" }}>edit</Button>
+            <Button className="pill-button" theme="info" size="sm" style={{ float: "right" }} onClick={props.clickHandler} job="edit">edit</Button>
           </CardBody>
         </Card>
       </Container>
