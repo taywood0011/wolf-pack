@@ -89,6 +89,7 @@ class PackInfo extends Component {
             alt="choose avatar"
             onClick={this.avatarHandler}
           />
+          <p>Choose Avatar</p>
         </div>
         <div className="form-container">
           <Form>
@@ -123,7 +124,7 @@ class PackInfo extends Component {
           </Form>
           <Button
             className="pill-button"
-            theme="info"
+            theme="dark"
             onClick={this.createHandler}
           >
             Submit

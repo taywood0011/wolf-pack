@@ -100,6 +100,7 @@ class UserInfo extends Component {
             alt="choose avatar"
             onClick={this.avatarHandler}
           />
+          <p>Choose Avatar</p>
         </div>
         <div className="form-container">
           <Form>
@@ -122,6 +123,8 @@ class UserInfo extends Component {
                 value={this.props.password}
                 onChange={this.changeHandler}
               />
+              </FormGroup>
+              <FormGroup>
               <FormInput
                 id="location"
                 name="location"
@@ -131,6 +134,7 @@ class UserInfo extends Component {
                 onChange={this.changeHandler}
               />
             </FormGroup>
+            <FormGroup>
             <FormTextarea
               id="description"
               name="description"
@@ -139,10 +143,11 @@ class UserInfo extends Component {
               value={this.props.description}
               onChange={this.changeHandler}
             />
+            </FormGroup>
           </Form>
           <Button
             className="pill-button"
-            theme="info"
+            theme="dark"
             onClick={this.createHandler}
           >
             Submit
