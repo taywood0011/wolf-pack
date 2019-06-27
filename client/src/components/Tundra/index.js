@@ -41,7 +41,6 @@ class Tundra extends React.Component {
         // insert database call using category in state
 
         try {
-          console.log(this.props.match.params.category);
           API.getPacks(this.props.match.params.category).then(res => {
             this.setState({
               data: res.data.map(item => {
@@ -76,12 +75,11 @@ class Tundra extends React.Component {
 
       case "userpacks":
           API.getUserPacks(this.props.match.params.member).then(res => {
-            console.log("Getting user packs for some frickin reason", this.props.match.params.member)
             this.setState({
               data: res.data.map(item => {
                 return {
                   ...item,
-                  btnAction: "Invite",
+                  btnAction: "View Page",
                   clickFn: this.showPack,
                   type: "mypack"
                 };
@@ -90,8 +88,7 @@ class Tundra extends React.Component {
           });
           break;
       default:
-        console.log("oops");
-        break;
+        return null;
       }
   }
 
@@ -100,8 +97,6 @@ class Tundra extends React.Component {
   }
 
   render() {
-    console.log("Tundra state: ", this.state.data);
-    console.log('TUNDRA', this.props);
     return (
       <>
         {/*}<NewPackPage />*/}
@@ -112,7 +107,8 @@ class Tundra extends React.Component {
               <div className="tundra-home">{/* Homepage */}</div>
             ) : (
               this.state.data.map(card => {
-                return <ItemCard key={card._id} {...card} user={this.props.user} forceRender={this.getCardData}/>;
+                console.log(card)
+                return <ItemCard key={card._id} {...card} user={this.props.user} history={this.props.history}/>;
               })
             )}
           </div>

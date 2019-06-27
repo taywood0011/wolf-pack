@@ -30,6 +30,7 @@ export default class ItemCard extends React.Component {
       //invite to group
       this.toggle();
     } else if (this.state.type === "pack"){
+      
       //request to join
 
       API.getUser(user).then(function(fullUser) {

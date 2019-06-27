@@ -84,6 +84,7 @@ export default class NavComponent extends React.Component {
   }
 
   renderLoggedIn = () => {
+    const userID = this.props.user._id;
     const username = this.props.user.username;
     return (
       <Navbar type="light" theme="light" expand="md">
@@ -98,7 +99,7 @@ export default class NavComponent extends React.Component {
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem>
-                  <Link to={"/packs/user/" + username}>
+                  <Link to={"/packs/user/" + userID}>
                     My Packs
                   </Link>
                 </DropdownItem>
