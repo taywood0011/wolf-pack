@@ -13,12 +13,8 @@ import {
   Collapse
 } from "shards-react";
 import Auth from "../../utils/Auth";
-import UserContext from "../../context/UserContext";
-
 
 export default class NavComponent extends React.Component {
-  static contextType = UserContext;
-
   constructor(props) {
     super(props);
 
@@ -59,18 +55,10 @@ export default class NavComponent extends React.Component {
   }
 
   render() {
-    return (
-      <UserContext.Consumer>
-        {context =>
-          Auth.isLoggedIn()
-            ? this.renderLoggedIn(context)
-            : this.renderNotLoggedIn(context)
-        }
-      </UserContext.Consumer>
-    );
+    return this.props.user ? this.renderLoggedIn() : this.renderNotLoggedIn();
   }
 
-  renderNotLoggedIn(context) {
+  renderNotLoggedIn = () => {
     return (
       <Navbar type="light" theme="light" expand="md">
         <NavbarBrand href="/">The Tundra</NavbarBrand>
@@ -78,9 +66,9 @@ export default class NavComponent extends React.Component {
           <Nav navbar className="ml-auto">
             <NavItem>
               <Link
-                to="/login"
+                to="/"
                 className={
-                  window.location.pathname === "/login"
+                  window.location.pathname === "/"
                     ? "nav-link active"
                     : "nav-link"
                 }
@@ -94,7 +82,8 @@ export default class NavComponent extends React.Component {
     );
   }
 
-  renderLoggedIn(context) {
+  renderLoggedIn = () => {
+    const username = this.props.user.username;
     return (
       <Navbar type="light" theme="light" expand="md">
         <NavbarBrand href="/">The Tundra</NavbarBrand>
@@ -108,9 +97,7 @@ export default class NavComponent extends React.Component {
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem>
-                  <Link
-                    to={"/packs/user/" + localStorage.getItem("username")}
-                  >
+                  <Link to={"/packs/user/" + username}>
                     My Packs
                   </Link>
                 </DropdownItem>
@@ -150,7 +137,7 @@ export default class NavComponent extends React.Component {
               <DropdownMenu>
                 <DropdownItem>
                   <Link
-                    to={"/howls/authors/" + localStorage.getItem("username")}
+                    to={"/howls/authors/" + username}
                   >
                     My Howls
                   </Link>
@@ -195,7 +182,7 @@ export default class NavComponent extends React.Component {
               </Link>
             </NavItem>
 
-            <NavItem onClick={e => this.handleLogOut(e, context)}>
+            <NavItem onClick={this.handleLogOut}>
               <Link
                 to="/login"
                 className={
@@ -213,10 +200,8 @@ export default class NavComponent extends React.Component {
     );
   }
 
-  handleLogOut(e, context) {
+  handleLogOut = e => {
     console.log("handleLogOut");
-    Auth.logOut(() => {
-      context.setUser(null);
-    });
-  }
+    Auth.logOut();
+  };
 }

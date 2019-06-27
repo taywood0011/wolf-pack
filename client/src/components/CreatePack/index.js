@@ -1,75 +1,94 @@
 import React, { Component } from "react";
 import "./style.css";
 import { Form, FormInput, FormTextarea, FormGroup, Button } from "shards-react";
-import UserContext from "../../context/UserContext";
-import { Route, Link } from "react-router-dom";
 import AvatarPage from "../AvatarPage";
-import API from "../../utils/API";
 
 class CreatePack extends Component {
-  static contextType = UserContext;
   state = {
     title: "",
     image: "",
     category: "",
     description: "",
-    author: localStorage.getItem("username"),
-
+    pickingAvatar: false
   };
 
   assignAvatar = image => {
     console.log(image);
     this.setState({
+      image,
+      showAvatarList: false,
+    });
+    this.props.history.push(this.props.newCategory);
+  };
+
+  setValue = (name, value) => {
+    this.setState({ [name]: value });
+  };
+
+  create = () => {
+    const copy = {...this.state};
+    this.props.postApi(copy)
+    this.props.history.push(this.props.categoryList);
+  };
+
+  showAvatarList = () => {
+    this.setState({
+      showAvatarList: true
+    });
+  };
+
+  render() {
+    if (this.state.showAvatarList) {
+      return <AvatarPage assignAvatar={this.assignAvatar} />;
+    } else {
+      return (
+        <PackInfo
+          {...this.state}
+          {...this.props}
+          showAvatarList={this.showAvatarList}
+          create={this.create}
+          setValue={this.setValue}
+        />
+      );
+    }
+  }
+}
+
+class PackInfo extends Component {
+  assignAvatar = image => {
+    console.log(image);
+    this.setState({
       image: image
     });
-    window.location.pathname === "/newPack/avatar"
-      ? this.props.history.push("/newPack")
-      : this.props.history.push("/newHowl");
+    this.props.history.push(this.props.newCategory);
   };
 
   changeHandler = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.props.setValue(name, value);
   };
 
   createHandler = e => {
     e.preventDefault();
-    const { title, image, category, description } = this.state;
-    window.location.pathname === "/newPack"
-      ? API.postPack(this.state)
-      : API.postHowl(this.state);
+    this.props.create();
+  };
 
-    this.props.history.push("/packCategories");
+  avatarHandler = e => {
+    e.preventDefault();
+    this.props.showAvatarList();
   };
 
   render() {
     return (
       <>
+        <h1>Create A New {this.props.label}</h1>
         <div className="img-container">
           <img
             className="edit-img"
-            src={
-              !this.state.image
-                ? "http://placekitten.com/1100/1100"
-                : this.state.image
-            }
+            src={this.props.image || "http://placekitten.com/1100/1100"}
             alt="choose avatar"
+            onClick={this.avatarHandler}
           />
-          <div className="img-text-center">
-            <span>
-              {" "}
-              <Button
-                outline
-                squared
-                size="md"
-                theme="light"
-                to={`${this.props.match.path}/avatar`}
-                tag={Link}
-              >
-                Choose An Image
-              </Button>{" "}
-            </span>
-          </div>
         </div>
         <div className="form-container">
           <Form>
@@ -77,9 +96,9 @@ class CreatePack extends Component {
               <FormInput
                 id="title"
                 name="title"
-                placeholder={!this.state.title ? "title" : this.state.title}
+                placeholder="Title"
                 type="text"
-                value={this.state.title}
+                value={this.props.title}
                 onChange={this.changeHandler}
               />
             </FormGroup>
@@ -89,7 +108,7 @@ class CreatePack extends Component {
                 name="category"
                 placeholder="Category"
                 type="text"
-                value={this.state.category}
+                value={this.props.category}
                 onChange={this.changeHandler}
               />
             </FormGroup>
@@ -98,7 +117,7 @@ class CreatePack extends Component {
               name="description"
               placeholder="Description"
               type="text"
-              value={this.state.description}
+              value={this.props.description}
               onChange={this.changeHandler}
             />
           </Form>
@@ -110,13 +129,6 @@ class CreatePack extends Component {
             Submit
           </Button>
         </div>
-        <Route
-          exact
-          path={`${this.props.match.path}/avatar`}
-          render={props => (
-            <AvatarPage {...props} assignAvatar={this.assignAvatar} />
-          )}
-        />
       </>
     );
   }

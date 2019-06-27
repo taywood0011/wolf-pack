@@ -8,7 +8,7 @@ function Category(props) {
     <Col sm="12" md="4" lg="3">
       <img className="category-img" src={props.image} alt={props.name} />
       <div className={`category-center fas fa-${props.icon} fa-5x`} />
-      <Link to={`/${props.dest}s/${props.name.toLowerCase()}`} className="category-title">
+      <Link to={`/${props.dest}/${props.name.toLowerCase()}`} className="category-title">
         {props.name}
       </Link>
     </Col>

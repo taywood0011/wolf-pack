@@ -1,99 +1,170 @@
 import React, { Component } from "react";
 import Tundra from "./components/Tundra";
 import FooterComponent from "./components/FooterComponent";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import CategoryPage from "./components/CategoryPage";
 import InputInfo from "./components/InputInfo";
-import ProtectedRoute from "./components/LoginComponent/ProtectedRoute";
 import NavComponent from "./components/NavComponent";
 import LoginComponent from "./components/LoginComponent";
-import UserContext from "./context/UserContext";
 import HomePage from "./components/LoginComponent/Homepage";
 import PackPage from "./components/PackPage";
 import CreatePack from "./components/CreatePack";
-import Auth from "./utils/Auth"
+import Auth from "./utils/Auth";
+import API from "./utils/API";
 
 class App extends Component {
-  state = {
-    user: null
-  };
+  state = {};
 
   setUser = user => {
-    this.setState({ user });
+    this.setState({
+      user
+    });
   };
 
-  refreshLogIn() {
-    const local = {
-      username: localStorage.getItem("username"),
-      token: localStorage.getItem("token")
-    };
-    console.log("User in storage:", local);
-    if (!Auth.isLoggedIn) {
-      this.setUser(local);
-    }
-  }
-
   componentDidMount() {
-    const local = {
-      username: localStorage.getItem("username"),
-      token: localStorage.getItem("token")
-    };
-    console.log("User in storage:", local);
-    if (local.username.length) {
-      this.setUser(local);
-    }
+    Auth.checkPreviousSession(this.setUser);
   }
 
   render() {
-    this.refreshLogIn()
     const { user } = this.state;
     const setUser = this.setUser;
-    return (
-      <Router>
-        <div>
-          <UserContext.Provider value={{ setUser, user }}>
-            <NavComponent />
-            <Route exact path="/packCategories" component={CategoryPage} />
-            <Route exact path="/howlCategories" component={CategoryPage} />
 
-            <Route path="/newHowl" component={CreatePack} />
-            <Route path="/newPack" component={CreatePack} />
-            <Route
-              exact
-              path="/howls/:category"
-              render={props => <Tundra currentDisplay="howls" {...props} />}
-            />
-            <Route
-              exact
-              path="/howls/authors/:author"
-              render={props => <Tundra currentDisplay="userhowls" {...props} />}
-            />
-            <Route
-              exact
-              path="/packs/:category"
-              render={props => <Tundra currentDisplay="packs" {...props} />}
-            />
-            <Route
-              exact
-              path="/packs/user/:member"
-              render={props => <Tundra currentDisplay="userpacks" {...props} />}
-            />
-          </UserContext.Provider>
+    const howlData = {
+      label: "Howl",
+      categoryList: "/howlCategories",
+      newCategory: "/newHowl",
+      avatars: "/newHowl/avatar",
+      categoryPrefix: "howls",
+      postApi: API.postHowl
+    };
+
+    const packData = {
+      label: "Pack",
+      categoryList: "/packCategories",
+      newCategory: "/newPack",
+      avatars: "/newPack/avatar",
+      categoryPrefix: "packs",
+      postApi: API.postPack
+    };
+
+    if (user) {
+      return (
+        <Router>
+          <NavComponent setUser={setUser} user={user} />
+
           <Route
-            exact
-            path="/pack/:id"
-            render={props => <PackPage currentDisplay="packPage" {...props} />}
+            path={howlData.categoryList}
+            render={props => (
+              <CategoryPage {...props} {...howlData} user={user} />
+            )}
+          />
+          <Route
+            path={packData.categoryList}
+            render={props => (
+              <CategoryPage {...props} {...packData} user={user} />
+            )}
           />
 
-          <UserContext.Provider value={{ setUser, user }}>
-            <ProtectedRoute exact path="/" component={HomePage} />
-            <Route exact path="/login" component={LoginComponent} />
-            <Route path="/profile" component={InputInfo} />
-          </UserContext.Provider>
+          <Route
+            path={howlData.newCategory}
+            render={props => (
+              <CreatePack {...props} {...howlData} user={user} />
+            )}
+          />
+          <Route
+            path={packData.newCategory}
+            render={props => (
+              <CreatePack {...props} {...packData} user={user} />
+            )}
+          />
+
+          <Route
+            path="/howls/:category"
+            render={props => (
+              <Tundra currentDisplay="howls" {...props} user={user} />
+            )}
+          />
+          <Route
+            path="/howls/authors/:author"
+            render={props => (
+              <Tundra currentDisplay="userhowls" {...props} user={user} />
+            )}
+          />
+          <Route
+            path="/packs/:category"
+            render={props => (
+              <Tundra currentDisplay="packs" {...props} user={user} />
+            )}
+          />
+          <Route
+            path="/packs/user/:member"
+            render={props => (
+              <Tundra currentDisplay="userpacks" {...props} user={user} />
+            )}
+          />
+          <Route
+            path="/pack/:id"
+            render={props => (
+              <PackPage currentDisplay="packPage" {...props} user={user} />
+            )}
+          />
+
+          <Route
+            exact
+            path="/"
+            render={props =>
+              user ? (
+                <HomePage {...props} user={user} />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+
+          <Route
+            exact
+            path="/login"
+            render={props =>
+              user ? (
+                <Redirect to="/" />
+              ) : (
+                <LoginComponent setUser={setUser} {...props} />
+              )
+            }
+          />
+
+          <Route
+            path="/profile"
+            render={props => (
+              <InputInfo {...props} setUser={this.setUser} user={user} />
+            )}
+          />
+
           <FooterComponent />
-        </div>
-      </Router>
-    );
+        </Router>
+      );
+    } else {
+      return (
+        <Router>
+          <NavComponent setUser={setUser} user={user} />
+          <Route
+            exact
+            path="/"
+            render={props => <Redirect to="/login" />}
+          />
+          <Route
+            exact
+            path="/login"
+            render={props => <LoginComponent setUser={setUser} {...props} />}
+          />
+          <Route
+            path="/profile"
+            render={props => <InputInfo {...props} setUser={this.setUser} user={user} />}
+          />
+          <FooterComponent />
+        </Router>
+      );
+    }
   }
 }
 

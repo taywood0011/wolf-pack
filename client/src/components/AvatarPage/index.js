@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Container, Row } from "shards-react";
 import Avatar from "../Avatar";
 import "./style.css";
 import API from "../../utils/API";
@@ -10,21 +9,20 @@ class AvatarPage extends Component {
   };
 
   componentDidMount() {
-    this.loadAvatars();
+    console.log('loading avatars')
+    API.showAvatars()
+      .then(res => {
+        console.log('avatars loaded', res.data)
+        this.setState({ avatars: res.data });
+      })
+      .catch(err => console.log(err));
   }
 
-  loadAvatars = () => {
-    API.showAvatars()
-      .then(res => this.setState({ avatars: res.data }))
-      .catch(err => console.log(err));
-  };
-
   render() {
-    console.log(this.props);
+    console.log('AvatarPage', this.props);
 
     return (
-      <Container className="avatar-container">
-        <Row>
+      <div className="avatar-container">
           {this.state.avatars.map(avatar => (
             <Avatar
               key={avatar._id}
@@ -32,8 +30,7 @@ class AvatarPage extends Component {
               handleClick={() => this.props.assignAvatar(avatar.image)}
             />
           ))}
-        </Row>
-      </Container>
+      </div>
     );
   }
 }

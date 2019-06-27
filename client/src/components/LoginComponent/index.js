@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import { withRouter} from "react-router-dom";
-import UserContext from "../../context/UserContext";
+import { withRouter } from "react-router-dom";
 import Auth from "../../utils/Auth";
 import { Form, FormInput, FormGroup, Button } from "shards-react";
 import "./styles.css";
 
 class LoginComponent extends Component {
-  static contextType = UserContext;
-
   state = {
     username: "",
     password: ""
@@ -22,12 +19,14 @@ class LoginComponent extends Component {
     e.preventDefault();
     const { username, password } = this.state;
     if (username && password) {
-      Auth.logIn(username, password, response => {
-        this.context.setUser(response);
-        this.props.history.push("/");
-      });
+      Auth.logIn(username, password, this.processUserLoggedIn);
     }
   };
+
+  processUserLoggedIn = (user) => {
+    this.props.setUser(user);
+    this.props.history.push("/");
+}
 
   render() {
     return (

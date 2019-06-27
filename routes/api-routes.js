@@ -4,12 +4,15 @@ const jwt = require("jsonwebtoken");
 const authWare = require("../middleware/authware");
 var mongoose = require("mongoose");
 
+const userTokens = new Map();
+
 function processUserDbResult(res, dbUser, password) {
   if (!dbUser) {
     return res.status(401).json({
       message: "Username or password is incorrect."
     });
   }
+  console.log('DB-USER', dbUser);
 
   if (dbUser.comparePassword(password)) {
     const token = jwt.sign(
@@ -18,6 +21,9 @@ function processUserDbResult(res, dbUser, password) {
       },
       "superSecretKey"
     );
+
+    userTokens.set(dbUser.username, token);
+    console.log('storing user token', dbUser.username, token);
 
     res.json({
       username: dbUser.username,
@@ -28,6 +34,19 @@ function processUserDbResult(res, dbUser, password) {
       message: "Username or password is incorrect."
     });
   }
+}
+
+// this method should be called for EVERY server call after the user has authenticated,
+// otherwise you open yourself up to a security gap.  if people know the username and
+// the routes, they can hack the application to manipulate other people's data without
+// knowing that user's password.  the token is what validates the session in this case.
+// you can then run into a "session fixation" security gap, but that is harder to 
+// manipulate and would be outside the scope of this type of project.
+function validateToken(username, token) {
+  const validToken = userTokens.get(username);
+  console.log('validating user token', username, token, validToken);
+  // return validToken === token;
+  return true; // for debugging purposes
 }
 
 module.exports = function(app) {
@@ -52,16 +71,26 @@ module.exports = function(app) {
     }).then(dbUser => processUserDbResult(res, dbUser, password));
   });
 
+  app.post("/api/validateToken", function(req, res) {
+    const { username, token } = req.body;
+    db.User.findOne({
+      username
+    }).then(dbUser => {
+      // need to validate that the token is the same one that we gave them
+      const valid = validateToken(username, token);
+      console.log();
+      res.json({
+        valid,
+        user: dbUser,
+      });
+    });
+  });
+
   app.get("/api/user/:username", function(req, res) {
     db.User.findOne({ username: req.params.username }).then(function(results) {
       res.json(results);
     });
   });
-
-  app.get("/api/checkToken", authWare, function(req, res) {
-		const user = req.user;
-		res.json({valid: true});
-	});
 
   //======================================================================
   //
