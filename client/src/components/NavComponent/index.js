@@ -85,6 +85,7 @@ export default class NavComponent extends React.Component {
 
   renderLoggedIn = () => {
     const userID = this.props.user._id;
+    console.log(userID)
     const username = this.props.user.username;
     return (
       <Navbar type="light" theme="light" expand="md">

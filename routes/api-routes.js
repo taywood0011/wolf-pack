@@ -27,7 +27,8 @@ function processUserDbResult(res, dbUser, password) {
 
     res.json({
       username: dbUser.username,
-      token
+      token,
+      _id: dbUser._id
     });
   } else {
     res.status(401).json({
