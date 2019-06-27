@@ -18,6 +18,7 @@ class InviteGroupPage extends Component {
        console.log("SUCCESS (maybe): ", newPack)
 
    })
+   alert(`You Invited ${this.state.howlAuthor} to a group`)
  };
 
  componentDidMount() {
