@@ -19,7 +19,6 @@ class InputInfo extends Component {
       userAvatar: image,
       showAvatarList: false
     });
-    this.props.history.push("/profile");
   };
 
   setValue = (name, value) => {

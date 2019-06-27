@@ -4,7 +4,7 @@ import InviteGroup from "../InviteGroup";
 
 import API from "../../utils/API";
 import {withRouter} from "react-router-dom"
-let currUser;
+
 class InviteGroupPage extends Component {
  state = {
    howlAuthor: null,
@@ -18,6 +18,7 @@ class InviteGroupPage extends Component {
        console.log("SUCCESS (maybe): ", newPack)
 
    })
+   alert(`You Invited ${this.state.howlAuthor} to a group`)
  };
 
  componentDidMount() {
