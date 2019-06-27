@@ -1,10 +1,22 @@
 .login, .intro {
-    background-color:  #f7f8f9;
+    background-color: #f7f8f9;
     width: 70%;
     padding: 30px;
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.intro {
+    background-image: url('https://res.cloudinary.com/dd0yofein/image/upload/v1561645783/background_ehktj2.jpg');
+    height: 1080px;
+    width: 1920px;
+    padding: 30px;
+    margin: auto;
+}
+
+h3 {
+    color: #f7f8f9
 }
 
 label {
