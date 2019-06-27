@@ -4,6 +4,10 @@
     position: relative;
 }
 
+h1 {
+    text-align: center;
+}
+
 .edit-img {
     opacity: .8;
     filter: brightness(40%) grayscale(10%);
