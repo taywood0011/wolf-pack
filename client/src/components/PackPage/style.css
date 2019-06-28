@@ -1,12 +1,57 @@
-.Pack-home {
-    height: 720px;
-}
-
 body {
     background-image: url("./packbackground.png");
 }
 
 .pack-display {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+}
+
+.pack-image {
+    float: right;
+    height: 50px;
+    width: 50px; 
+}
+
+.pack-member-container {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.pack-member-img {
+    height: 80px;
+    width: 80px;
+}
+
+.pack-member-info {
+  font-size: 12px;
+  margin: 2px;
+  width: 100%
+}
+
+.pack-member-card {
+    width: 80px;
+    height: 128px;
+}
+
+.pack-member-card-body {
+    padding: 0px !important;
+}
+
+hr {
+    margin: 0px;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.pack-description-container {
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
     width: 90%;

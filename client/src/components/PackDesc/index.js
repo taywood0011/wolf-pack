@@ -1,26 +1,19 @@
 import React from "react";
-import {
-    Card,
-    CardBody,
-    CardHeader,
-    Container,
-    Button
-  } from "shards-react";
+import { Card, CardBody, CardHeader, Container } from "shards-react";
 
-
-  function PackDesc(props) {
-    return (
-        <Container>
-        <Card style={{ maxWidth: "500x" }}>
-          <CardHeader>{props.category}</CardHeader>
-          <CardBody>
-            <p>{props.description}</p>
-            <Button className="pill-button" theme="info" size="sm" style={{ float: "right" }} onClick={props.clickHandler} job="edit">edit</Button>
-          </CardBody>
-        </Card>
-      </Container>
-    );
-  }
-
+function PackDesc(props) {
+  return (
+    <Container className="pack-description-container">
+      <Card style={{ minWidth: "100%" }}>
+        <CardHeader>Pack Description
+        <img className="pack-image" src={props.image} alt="packImage" />
+        </CardHeader>
+        <CardBody>
+          <p>{props.description}</p>
+        </CardBody>
+      </Card>
+    </Container>
+  );
+}
 
 export default PackDesc;

@@ -8,6 +8,7 @@ import {
 import PackMember from "../PackMember";
 import PackHeader from "../PackHeader";
 import API from "../../utils/API";
+import "./style.css"
 // import NewMessage from "../NewMessage";
 
 
@@ -85,11 +86,11 @@ class PackPage extends React.Component {
     return (
       <>
         {/* pack header */}
-        <PackHeader image={this.state.image} title={this.state.title} />
+        <PackHeader title={this.state.title} />
         {/* pack description card */}
-        <PackDesc category={this.state.category} description={this.state.description} clickHandler={this.clickHandler}/>
+        <PackDesc category={this.state.category} image={this.state.image} description={this.state.description} clickHandler={this.clickHandler}/>
         {/* pack members */}
-        <Container>
+        <Container className="pack-member-container">
           <Row>
             {this.state.members.map(packMember => (
               <PackMember key={packMember._id} {...packMember} clickHandler={this.clickHandler} />
