@@ -62,7 +62,7 @@ export default class NavComponent extends React.Component {
   renderNotLoggedIn = () => {
     return (
       <Navbar type="light" theme="light" expand="md">
-        <NavbarBrand href="/">The Tundra</NavbarBrand>
+        <NavbarBrand href="/">Wolf Pack</NavbarBrand>
         <Collapse open={true} navbar>
           <Nav navbar className="ml-auto">
             <NavItem>
