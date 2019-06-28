@@ -10,9 +10,16 @@ class Tundra extends React.Component {
     data: []
   };
 
-  inviteHowl = () => {};
+  deleteHowlFromState = (howlID) => {
+    const newState = this.state.data.filter(element => {
+      return howlID !== element._id
+    })
 
-  joinPack = (pack, user) => {};
+    this.setState({
+      data: newState
+    })
+
+  }
 
   getCardData() {
     switch (this.props.currentDisplay) {
@@ -108,7 +115,7 @@ class Tundra extends React.Component {
             ) : (
               this.state.data.map(card => {
                 console.log(card)
-                return <ItemCard key={card._id} {...card} user={this.props.user} history={this.props.history}/>;
+                return <ItemCard key={card._id} {...card} user={this.props.user} history={this.props.history} deleteHowl={this.deleteHowlFromState}/>;
               })
             )}
           </div>
