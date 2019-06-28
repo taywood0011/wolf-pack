@@ -3,7 +3,7 @@
 }
 
 body {
-    background-image: url("./interlaced.png");
+    background-image: url("./interlaced.png")!important;
 }
 
 .tundraDisplay {
@@ -11,4 +11,5 @@ body {
     flex-wrap: wrap;
     width: 90%;
     margin: auto;
+    margin-bottom: 23%;
 }
