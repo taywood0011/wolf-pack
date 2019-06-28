@@ -5,7 +5,7 @@ import { ListGroupItem } from "shards-react"
 function NewMessage(props) {
   return (
    <ListGroupItem>
-       {props.newMessage}
+       {`${props.author}: ${props.message}`}
    </ListGroupItem>
   );
 }

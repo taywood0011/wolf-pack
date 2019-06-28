@@ -98,14 +98,14 @@ class PackPage extends React.Component {
           </Row>
         </Container>
         {/* pack chat */}
-        <PackChat newMessage={this.state.newMessage} clickHandler={this.clickHandler} chat={this.state.chat}/>
+        <PackChat clickHandler={this.clickHandler} packID={this.props.match.params.id} {...this.props}/>
 
         <Modal open={this.state.openEdit} toggle={this.toggleEdit}>
           <ModalHeader>Header</ModalHeader>
           <ModalBody> Edit Description</ModalBody>
         </Modal>
 
-        <Modal open={this.state.openProfile} toggle={this.toggleProfile}>
+        <Modal open={this.state.openProfile} toggle={this.toggleProfile} >
           <ModalHeader>Header</ModalHeader>
           <ModalBody> Edit Description</ModalBody>
         </Modal>
