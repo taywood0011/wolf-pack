@@ -62,7 +62,7 @@ export default class NavComponent extends React.Component {
   renderNotLoggedIn = () => {
     return (
       <Navbar type="light" theme="light" expand="md">
-        <NavbarBrand href="/">Shitty Facebook</NavbarBrand>
+        <NavbarBrand href="/">Wolf Pack</NavbarBrand>
         <Collapse open={true} navbar>
           <Nav navbar className="ml-auto">
             <NavItem>
@@ -89,7 +89,7 @@ export default class NavComponent extends React.Component {
     const username = this.props.user.username;
     return (
       <Navbar type="light" theme="light" expand="md">
-        <NavbarBrand href="/">Shitty Facebook</NavbarBrand>
+        <NavbarBrand href="/">The Tundra</NavbarBrand>
         <NavbarToggler onClick={this.toggleNavbar} />
 
         <Collapse open={this.state.collapseOpen} navbar>
