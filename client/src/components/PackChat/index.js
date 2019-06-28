@@ -8,6 +8,7 @@ import {
   Button
 } from "shards-react";
 import firebase from "firebase";
+import "./style.css"
 
 const firebaseConfig = {
   apiKey: "AIzaSyBGsQy2KqnvRtOT7pZz8yIexudZyncUhX8",

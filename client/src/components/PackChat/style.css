@@ -1,3 +1,6 @@
-body{
-    overflow: auto;
-}
+.list-group
+{
+        background-color: white;
+        height: 200gipx;
+        overflow-y: scroll;
+      }
