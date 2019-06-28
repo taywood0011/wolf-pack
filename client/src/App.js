@@ -80,6 +80,7 @@ class App extends Component {
           />
 
           <Route
+          exact
             path="/howls/:category"
             render={props => (
               <Tundra currentDisplay="howls" {...props} user={user} />

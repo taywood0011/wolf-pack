@@ -172,7 +172,7 @@ export default class NavComponent extends React.Component {
               </DropdownMenu>
             </Dropdown>
 
-            <NavItem>
+            {/* <NavItem>
               <Link
                 to="/profile"
                 className={
@@ -183,7 +183,7 @@ export default class NavComponent extends React.Component {
               >
                 Profile
               </Link>
-            </NavItem>
+            </NavItem> */}
 
             <NavItem onClick={this.handleLogOut}>
               <Link
