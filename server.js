@@ -13,7 +13,7 @@ app.use(express.json());
 
 
 //Connect to our database
-mongoose.connect("mongodb://localhost/wpdb", {
+mongoose.connect("mongodb://heroku_vjhn319l:dqiusl2r7b3454cdf9qt9ot6jb@ds245387.mlab.com:45387/heroku_vjhn319l", {
   useNewUrlParser: true
 });
 
