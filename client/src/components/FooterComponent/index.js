@@ -25,7 +25,7 @@ export default () => {
           <a href="https://github.com/taywood0011/wolf-pack">Github Repo</a>
         </p>
 
-        <p>WolfPack <a href="https://serene-sea-50186.herokuapp.com/">&copy;</a> Hahaha jk not yet</p>
+        <p>WolfPack <a href="https://serene-sea-50186.herokuapp.com/">&copy;</a>2019</p>
       </div>
     </footer>
   );
