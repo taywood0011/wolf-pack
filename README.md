@@ -45,13 +45,15 @@ V1.0
 ![](./images/ickavatar.png)
 ## The Tundra
 ![](./images/tundra.png)
-## Browse Packs By Category
+## Browse Packs Or Howls By Category
 ![](./images/packcategories.png)
 ## Join A Pack
 ![](./images/browsepacks.png)
+## Invite A User To A Pack
+![](./images/inviteuserpng)
 ## Create A New Pack
 ![](./images/createpack.png)
-## Browse Your Packs
+## Browse Your Packs Or Howls
 ![](./images/mypacks.png)
 ## View A Pack Page
 ![](./images/packpage.png)
