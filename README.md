@@ -38,7 +38,7 @@ V1.0
 
 ## Screenshots
 ## Login
-![](./client/public/Images/login.png)
+![](./images/login.png)
 
 
 
