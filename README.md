@@ -50,7 +50,7 @@ V1.0
 ## Join A Pack
 ![](./images/browsepacks.png)
 ## Invite A User To A Pack
-![](./images/inviteuserpng)
+![](./images/inviteuser.png)
 ## Create A New Pack
 ![](./images/createpack.png)
 ## Browse Your Packs Or Howls
