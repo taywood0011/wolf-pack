@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/taywood0011/wolf-pack#readme",
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^7.0.0",
     "express": "^4.17.1",
